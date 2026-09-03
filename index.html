@@ -8,7 +8,7 @@
   <title>Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar</title>
   <meta name="google-site-verification" content="cbSE7olGd0ibEx_bhjC3aitjIovXCSwUKYbVOh7nbLs" />
   <meta name="title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi umum & spesialis terlengkap serta poliklinik medis terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, konsultasi Gemini AI, reservasi online, dan TV antrean pintar bersuara otomatis." />
+  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi umum & spesialis terlengkap serta poliklinik medis terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, konsultasi Gemini AI, reservasi online, e-resep farmasi, order lab, dan TV antrean pintar bersuara otomatis." />
   <meta name="keywords" content="klinik gigi makassar, dokter gigi spesialis makassar, akshara dental space, aksharadental vercel, behel makassar, ortodontis makassar, pasang kawat gigi makassar, dokter bedah mulut makassar, tambal gigi estetik, perawatan saluran akar, pembersihan karang gigi scaling, klinik spesialis makassar, dokter anak makassar, dokter penyakit dalam makassar, reservasi klinik gigi online makassar" />
   <meta name="author" content="Klinik Akshara Dental Space" />
   <meta name="publisher" content="Klinik Akshara Dental Space" />
@@ -31,7 +31,7 @@
   <meta property="og:locale" content="id_ID" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta property="og:description" content="Pusat perawatan gigi modern dan poliklinik spesialis medis di Makassar. Didukung teknologi dental 3D, odontogram digital 52 gigi, e-resep, AI diagnostics, dan TV pemanggilan antrean otomatis." />
+  <meta property="og:description" content="Pusat perawatan gigi modern dan poliklinik spesialis medis di Makassar. Didukung teknologi dental 3D, odontogram digital 52 gigi, e-resep farmasi terintegrasi, order rujukan lab, AI diagnostics, dan TV pemanggilan antrean otomatis." />
   <meta property="og:url" content="https://aksharadental.vercel.app/" />
   <meta property="og:site_name" content="Klinik Akshara Dental Space" />
   <meta property="og:image" content="https://aksharadental.vercel.app/axalogo.png" />
@@ -639,7 +639,7 @@
       box-sizing: border-box;
     }
 
-    /* CRITICAL: min-width: 0 prevents CSS grid tracks from blowing out! */
+    /* CRITICAL: min-width: 0 prevents CSS grid blowout */
     .form-group {
       display: flex;
       flex-direction: column;
@@ -1453,12 +1453,15 @@
       <div id="staffSectionDokter" style="display:none;">
         <div class="form-grid">
           <div class="glass-card" style="padding:20px;">
-            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;"><i class="fa-solid fa-users"></i> Antrean Pasien Hari Ini</h3>
-            <div id="doctorQueueList" style="display:flex; flex-direction:column; gap:10px; max-height:500px; overflow-y:auto;"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h3 style="font-size:1.1rem; font-weight:700;"><i class="fa-solid fa-users"></i> Antrean Pasien Hari Ini</h3>
+              <button class="nav-btn btn-outline" style="padding:4px 8px; font-size:0.75rem;" onclick="loadDoctorQueueData()"><i class="fa-solid fa-rotate"></i> Reload</button>
+            </div>
+            <div id="doctorQueueList" style="display:flex; flex-direction:column; gap:10px; max-height:520px; overflow-y:auto;"></div>
           </div>
 
           <div class="glass-card" style="padding:20px;" id="doctorWorkArea">
-            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;"><i class="fa-solid fa-stethoscope"></i> Rekam Medis & CPPT (SOAP)</h3>
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;"><i class="fa-solid fa-stethoscope"></i> Rekam Medis, Odontogram, E-Resep & Lab</h3>
             <div id="selectedPatientBadge" style="padding:10px; border-radius:10px; background:var(--badge-bg); font-size:0.85rem; font-weight:700; margin-bottom:14px;">
               Pilih salah satu pasien di kolom antrean untuk memulai pemeriksaan.
             </div>
@@ -1522,10 +1525,6 @@
               </div>
               <textarea id="cpptAsesmen" rows="2" placeholder="Diagnosa dokter..."></textarea>
             </div>
-            <div class="form-group" style="margin-bottom:12px;">
-              <label for="cpptPlan">Plan / Terapi Tindakan Medis</label>
-              <textarea id="cpptPlan" rows="2" placeholder="Rencana tindakan, resep obat, atau kontrol ulang..."></textarea>
-            </div>
 
             <!-- Gemini AI Box -->
             <div id="aiRecommendationBox" style="display:none; padding:12px; border-radius:10px; background:rgba(2,132,199,0.08); border:1px solid var(--accent); margin-bottom:14px;">
@@ -1533,11 +1532,106 @@
               <div id="aiRecommendationText" style="font-size:0.82rem; line-height:1.5; white-space:pre-wrap;"></div>
             </div>
 
+            <div class="form-group" style="margin-bottom:12px;">
+              <label for="cpptPlan">Plan / Terapi Tindakan Medis</label>
+              <textarea id="cpptPlan" rows="2" placeholder="Rencana tindakan, resep obat, atau kontrol ulang..."></textarea>
+            </div>
+
+            <!-- MODUL E-RESEP OBAT KE APOTEK/FARMASI -->
+            <div style="border-top:1.5px solid var(--glass-border); padding-top:14px; margin-bottom:16px;">
+              <h4 style="font-size:0.95rem; font-weight:800; color:var(--primary); margin-bottom:10px;">
+                <i class="fa-solid fa-prescription"></i> E-Resep Obat ke Farmasi / Apotek
+              </h4>
+              <div class="form-grid" style="grid-template-columns:2fr 1fr 2fr auto; gap:8px; align-items:flex-end;">
+                <div class="form-group">
+                  <label style="font-size:0.75rem;">Pilih Obat (Dari Master Obat)</label>
+                  <select id="resepPilihObat" style="padding:8px 10px; font-size:0.85rem;"></select>
+                </div>
+                <div class="form-group">
+                  <label style="font-size:0.75rem;">Jumlah</label>
+                  <input type="number" id="resepJumlahObat" value="10" min="1" style="padding:8px 10px; font-size:0.85rem;" />
+                </div>
+                <div class="form-group">
+                  <label style="font-size:0.75rem;">Aturan Pakai / Signa</label>
+                  <input type="text" id="resepSignaObat" placeholder="Contoh: 3 x 1 Sesudah Makan" style="padding:8px 10px; font-size:0.85rem;" />
+                </div>
+                <button type="button" class="nav-btn btn-primary" onclick="tambahItemResep()" style="padding:8px 14px; font-size:0.82rem; height:42px;">
+                  <i class="fa-solid fa-plus"></i> Tambah
+                </button>
+              </div>
+
+              <!-- Tabel Daftar Obat yang Diresepkan -->
+              <div style="margin-top:10px; overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+                  <thead>
+                    <tr style="border-bottom:1.5px solid var(--glass-border); text-align:left;">
+                      <th style="padding:6px;">Nama Obat</th>
+                      <th style="padding:6px; text-align:center;">Qty</th>
+                      <th style="padding:6px;">Aturan Pakai</th>
+                      <th style="padding:6px; text-align:center;">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="resepTableBody">
+                    <tr><td colspan="4" style="padding:8px; text-align:center; color:var(--text-muted);">Belum ada obat yang ditambahkan.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- MODUL ORDER RUJUKAN LABORATORIUM -->
+            <div style="border-top:1.5px solid var(--glass-border); padding-top:14px; margin-bottom:16px;">
+              <h4 style="font-size:0.95rem; font-weight:800; color:#059669; margin-bottom:10px;">
+                <i class="fa-solid fa-flask-vial"></i> Order Rujukan Uji Laboratorium (Laboran)
+              </h4>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; font-size:0.82rem;">
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Dental Panoramic 2D" style="width:auto;" /> Rontgen Panoramic 2D
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Rontgen Periapikal" style="width:auto;" /> Rontgen Periapikal Gigi
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Darah Lengkap (CBC)" style="width:auto;" /> Darah Lengkap (CBC)
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Bleeding & Clotting Time" style="width:auto;" /> Bleeding / Clotting Time
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Gula Darah Sewaktu (GDS)" style="width:auto;" /> Gula Darah Sewaktu (GDS)
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; font-weight:600; cursor:pointer;">
+                  <input type="checkbox" name="labTests" value="Swab Kultur Bakteri Oral" style="width:auto;" /> Kultur Bakteri Oral
+                </label>
+              </div>
+            </div>
+
             <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;">
               <button class="nav-btn btn-outline" onclick="openDocGeneratorModal()"><i class="fa-solid fa-file-pdf"></i> Buat Surat Sakit/Sehat</button>
-              <button class="nav-btn btn-primary" onclick="submitCppt()"><i class="fa-solid fa-floppy-disk"></i> Simpan CPPT & Selesaikan</button>
+              <button class="nav-btn btn-primary" onclick="submitCppt()"><i class="fa-solid fa-floppy-disk"></i> Simpan CPPT & Kirim Resep/Lab</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- KONTEN PORTAL FARMASI / APOTEK -->
+      <div id="staffSectionFarmasi" style="display:none;">
+        <div class="glass-card" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="font-size:1.15rem; font-weight:800;"><i class="fa-solid fa-prescription-bottle-medical"></i> Antrean E-Resep Obat Pasien Masuk</h3>
+            <button class="nav-btn btn-outline" style="padding:4px 8px; font-size:0.75rem;" onclick="loadPharmacyOrders()"><i class="fa-solid fa-rotate"></i> Reload</button>
+          </div>
+          <div id="pharmacyOrdersList" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </div>
+      </div>
+
+      <!-- KONTEN PORTAL LABORATORIUM -->
+      <div id="staffSectionLab" style="display:none;">
+        <div class="glass-card" style="padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="font-size:1.15rem; font-weight:800;"><i class="fa-solid fa-vial-circle-check"></i> Order Rujukan Uji Laboratorium</h3>
+            <button class="nav-btn btn-outline" style="padding:4px 8px; font-size:0.75rem;" onclick="loadLabOrders()"><i class="fa-solid fa-rotate"></i> Reload</button>
+          </div>
+          <div id="labOrdersList" style="display:flex; flex-direction:column; gap:12px;"></div>
         </div>
       </div>
 
@@ -1682,7 +1776,7 @@
       <form onsubmit="handleLoginSubmit(event)">
         <div class="form-group" style="margin-bottom:12px;">
           <label for="loginUsername">Username</label>
-          <input type="text" id="loginUsername" required placeholder="Contoh: admin, drg_akshara..." />
+          <input type="text" id="loginUsername" required placeholder="admin / drg_akshara / apoteker_dewi / lab_budi / kasir_siti" />
         </div>
         <div class="form-group" style="margin-bottom:18px;">
           <label for="loginPassword">Password</label>
@@ -1845,6 +1939,8 @@
     let slideTimer = null;
     let activeDoctorPatient = null;
     let deferredPwaPrompt = null;
+    let masterObatList = [];
+    const resepItems = [];
     const odontogramState = {};
 
     window.addEventListener('DOMContentLoaded', function() {
@@ -1852,6 +1948,7 @@
       initHeroSlider();
       initOdontogramGrid();
       loadPublicData();
+      loadMasterObatData();
       checkUrlParams();
       initInlineServiceWorker();
       initScrollToTopListener();
@@ -2008,6 +2105,26 @@
       if (sel) sel.value = docId;
     }
 
+    function loadMasterObatData() {
+      runApi('getMasterObat', {})
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            masterObatList = res.list || [];
+            const sel = document.getElementById('resepPilihObat');
+            if (sel) {
+              let html = '';
+              for (let i = 0; i < masterObatList.length; i++) {
+                const o = masterObatList[i];
+                html += '<option value="' + o.obatId + '" data-harga="' + o.harga + '" data-nama="' + o.nama + '">' +
+                  o.nama + ' (Stok: ' + o.stok + ' ' + o.satuan + ' - Rp ' + o.harga.toLocaleString() + ')' +
+                '</option>';
+              }
+              sel.innerHTML = html;
+            }
+          }
+        });
+    }
+
     function switchReservasiTab(tab) {
       const btnBaru = document.getElementById('tabPasienBaruBtn');
       const btnLama = document.getElementById('tabPasienLamaBtn');
@@ -2076,8 +2193,8 @@
         noHp: document.getElementById('resNoHp').value,
         alamat: document.getElementById('resAlamat').value,
         alergiObat: document.getElementById('resAlergi').value,
-        dokterId: document.getElementById('resDokterSelect').value,
-        ruanganPoli: 'Poli Gigi & Medis',
+        dokterId: document.getElementById('resDokterSelect').value || 'DOC-015',
+        ruanganPoli: 'Poli Gigi & Spesialis',
         keluhanUtama: document.getElementById('resKeluhan').value
       };
 
@@ -2088,6 +2205,10 @@
           if (res && res.status === 'success') {
             showToast('Pendaftaran Berhasil! No: ' + res.kodeAntrean, 'success');
             document.getElementById('formReservasi').reset();
+            // Sinkronisasi instan jika staf sedang login
+            if (currentUser && (currentUser.role === 'Dokter' || currentUser.role === 'Admin')) {
+              loadDoctorQueueData();
+            }
           } else {
             showToast('Gagal mendaftar: ' + (res.message || 'Error server'), 'error');
           }
@@ -2274,16 +2395,17 @@
 
     function refreshStaffView() {
       if (!currentUser) return;
-      if (currentUser.role === 'Dokter') loadDoctorQueueData();
-      else if (currentUser.role === 'Kasir') checkPosShiftStatus();
-      else if (currentUser.role === 'Admin') loadAdminSettingsAndAnalytics();
+      if (currentUser.role === 'Dokter' || currentUser.role === 'Admin') loadDoctorQueueData();
+      if (currentUser.role === 'Farmasi') loadPharmacyOrders();
+      if (currentUser.role === 'Laboratorium') loadLabOrders();
+      if (currentUser.role === 'Kasir') checkPosShiftStatus();
       showToast('Data dashboard disegarkan.', 'info');
     }
 
     function openPortalDashboard() {
       switchView('portal');
       document.getElementById('portalGreeting').innerText = 'Selamat Datang, ' + currentUser.fullName;
-      document.getElementById('portalRoleBadge').innerText = 'Role: ' + currentUser.role + ' (' + currentUser.poliklinikId + ')';
+      document.getElementById('portalRoleBadge').innerText = 'Role: ' + currentUser.role + ' (' + (currentUser.dokterId || currentUser.poliklinikId) + ')';
       setupPortalTabsByRole(currentUser.role);
     }
 
@@ -2292,9 +2414,17 @@
       let html = '';
 
       if (role === 'Dokter') {
-        html += '<button class="tab-btn active" onclick="switchStaffSection(\'dokter\')"><i class="fa-solid fa-user-doctor"></i> Pelayanan Medis</button>';
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'dokter\')"><i class="fa-solid fa-user-doctor"></i> Pelayanan Medis & CPPT</button>';
         switchStaffSection('dokter');
         loadDoctorQueueData();
+      } else if (role === 'Farmasi') {
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'farmasi\')"><i class="fa-solid fa-prescription"></i> E-Resep Farmasi</button>';
+        switchStaffSection('farmasi');
+        loadPharmacyOrders();
+      } else if (role === 'Laboratorium') {
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'lab\')"><i class="fa-solid fa-flask-vial"></i> Order Uji Lab</button>';
+        switchStaffSection('lab');
+        loadLabOrders();
       } else if (role === 'Kasir') {
         html += '<button class="tab-btn active" onclick="switchStaffSection(\'kasir\')"><i class="fa-solid fa-cash-register"></i> Kasir & POS</button>';
         switchStaffSection('kasir');
@@ -2302,6 +2432,8 @@
       } else if (role === 'Admin') {
         html += '<button class="tab-btn active" onclick="switchStaffSection(\'admin\')"><i class="fa-solid fa-gear"></i> Sistem & Gemini API</button>';
         html += '<button class="tab-btn" onclick="switchStaffSection(\'dokter\')"><i class="fa-solid fa-stethoscope"></i> Preview Medis</button>';
+        html += '<button class="tab-btn" onclick="switchStaffSection(\'farmasi\')"><i class="fa-solid fa-prescription"></i> Farmasi</button>';
+        html += '<button class="tab-btn" onclick="switchStaffSection(\'lab\')"><i class="fa-solid fa-flask-vial"></i> Lab</button>';
         html += '<button class="tab-btn" onclick="switchStaffSection(\'kasir\')"><i class="fa-solid fa-cash-register"></i> Kasir POS</button>';
         switchStaffSection('admin');
         loadAdminSettingsAndAnalytics();
@@ -2311,42 +2443,85 @@
 
     function switchStaffSection(sec) {
       document.getElementById('staffSectionDokter').style.display = sec === 'dokter' ? 'block' : 'none';
+      document.getElementById('staffSectionFarmasi').style.display = sec === 'farmasi' ? 'block' : 'none';
+      document.getElementById('staffSectionLab').style.display = sec === 'lab' ? 'block' : 'none';
       document.getElementById('staffSectionKasir').style.display = sec === 'kasir' ? 'block' : 'none';
       document.getElementById('staffSectionAdmin').style.display = sec === 'admin' ? 'block' : 'none';
+
+      if (sec === 'farmasi') loadPharmacyOrders();
+      if (sec === 'lab') loadLabOrders();
     }
 
+    /**
+     * Solusi Antrean Pasien Masuk ke Dashboard Dokter:
+     * Mengirimkan dokterId dan userFullName agar dicocokkan secara sempurna oleh backend
+     */
     function loadDoctorQueueData() {
-      runApi('getDoctorQueue', { dokterId: currentUser ? currentUser.userId : '' })
+      const container = document.getElementById('doctorQueueList');
+      if (container) {
+        container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem;">Memuat daftar pasien...</div>';
+      }
+
+      const payload = {
+        dokterId: currentUser ? (currentUser.dokterId || currentUser.userId) : '',
+        userFullName: currentUser ? currentUser.fullName : ''
+      };
+
+      runApi('getDoctorQueue', payload)
         .then(function(res) {
           if (res && res.status === 'success') {
             renderDoctorQueueList(res.list || []);
+          } else {
+            if (container) container.innerHTML = '<div style="color:#ef4444; font-size:0.8rem;">Gagal memuat antrean: ' + (res.message || 'Error') + '</div>';
           }
+        })
+        .catch(function(err) {
+          if (container) container.innerHTML = '<div style="color:#ef4444; font-size:0.8rem;">Koneksi error: ' + err.toString() + '</div>';
         });
     }
 
     function renderDoctorQueueList(list) {
       const container = document.getElementById('doctorQueueList');
       if (!container) return;
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem; padding:12px; text-align:center;">Tidak ada antrean saat ini.</div>';
+        return;
+      }
+
       let html = '';
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
-        html += '<div class="glass-card" style="padding:10px; cursor:pointer;" onclick="selectPatientForExam(\'' + encodeURIComponent(JSON.stringify(item)) + '\')">' +
+        const itemStr = encodeURIComponent(JSON.stringify(item));
+        html += '<div class="glass-card" style="padding:12px; cursor:pointer; border-left:4px solid var(--primary);" onclick="selectPatientForExam(\'' + itemStr + '\')">' +
           '<div style="display:flex; justify-content:space-between; align-items:center;">' +
-            '<strong style="color:var(--primary);">' + item.kodeAntrean + '</strong>' +
-            '<span style="font-size:0.75rem; padding:2px 6px; border-radius:6px; background:var(--badge-bg);">' + item.statusAntrean + '</span>' +
+            '<strong style="color:var(--primary); font-size:0.95rem;">' + item.kodeAntrean + '</strong>' +
+            '<span style="font-size:0.75rem; padding:2px 8px; border-radius:6px; background:var(--badge-bg); font-weight:700;">' + item.statusAntrean + '</span>' +
           '</div>' +
           '<div style="font-weight:700; margin:4px 0; font-size:0.9rem;">' + item.namaPasien + ' (' + item.nomorRm + ')</div>' +
-          '<div style="font-size:0.78rem; color:var(--text-muted);">' + item.keluhanUtama + '</div>' +
+          '<div style="font-size:0.78rem; color:var(--text-muted);">' + (item.keluhanUtama || 'Tidak ada catatan keluhan') + '</div>' +
+          '<div style="margin-top:8px; display:flex; gap:6px;">' +
+            '<button class="nav-btn btn-primary" style="padding:4px 10px; font-size:0.75rem; min-height:30px;" onclick="event.stopPropagation(); callCurrentPatient(\'' + item.kodeAntrean + '\')"><i class="fa-solid fa-volume-high"></i> Panggil</button>' +
+          '</div>' +
         '</div>';
       }
-      container.innerHTML = html || '<div style="color:var(--text-muted); font-size:0.8rem;">Tidak ada antrean saat ini.</div>';
+      container.innerHTML = html;
+    }
+
+    function callCurrentPatient(kode) {
+      runApi('callQueue', { kodeAntrean: kode, user: currentUser ? currentUser.fullName : 'DOKTER' })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast('Pasien ' + kode + ' dipanggil!', 'success');
+            loadDoctorQueueData();
+          }
+        });
     }
 
     function selectPatientForExam(itemJsonStr) {
       const item = JSON.parse(decodeURIComponent(itemJsonStr));
       activeDoctorPatient = item;
 
-      document.getElementById('selectedPatientBadge').innerHTML = 'Pasien: <strong>' + item.namaPasien + '</strong> (' + item.nomorRm + ') | No: ' + item.kodeAntrean;
+      document.getElementById('selectedPatientBadge').innerHTML = 'Pasien Aktif: <strong>' + item.namaPasien + '</strong> (' + item.nomorRm + ') | No: ' + item.kodeAntrean;
       document.getElementById('cpptSubjektif').value = item.keluhanUtama || '';
 
       const allergyBox = document.getElementById('patientAllergyAlert');
@@ -2358,6 +2533,64 @@
       }
 
       document.getElementById('odontogramModule').style.display = 'block';
+      showToast('Rekam medis ' + item.namaPasien + ' dibuka.', 'info');
+    }
+
+    function tambahItemResep() {
+      const sel = document.getElementById('resepPilihObat');
+      if (!sel || !sel.value) {
+        showToast('Pilih obat terlebih dahulu!', 'error');
+        return;
+      }
+
+      const selectedOpt = sel.options[sel.selectedIndex];
+      const obatId = sel.value;
+      const nama = selectedOpt.getAttribute('data-nama');
+      const harga = parseInt(selectedOpt.getAttribute('data-harga')) || 0;
+      const qty = parseInt(document.getElementById('resepJumlahObat').value) || 1;
+      const aturan = document.getElementById('resepSignaObat').value.trim() || 'Sesuai Anjuran Dokter';
+
+      if (activeDoctorPatient && activeDoctorPatient.alergi && activeDoctorPatient.alergi.toLowerCase() !== 'tidak ada') {
+        if (nama.toLowerCase().includes(activeDoctorPatient.alergi.toLowerCase())) {
+          showToast('PERINGATAN ALERGI: Pasien alergi terhadap ' + nama + '!', 'error');
+        }
+      }
+
+      resepItems.push({
+        obatId: obatId,
+        nama: nama,
+        jumlah: qty,
+        harga: harga,
+        aturan: aturan
+      });
+
+      renderResepTable();
+      showToast(nama + ' ditambahkan ke resep.', 'success');
+    }
+
+    function hapusItemResep(index) {
+      resepItems.splice(index, 1);
+      renderResepTable();
+    }
+
+    function renderResepTable() {
+      const tbody = document.getElementById('resepTableBody');
+      if (resepItems.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="padding:8px; text-align:center; color:var(--text-muted);">Belum ada obat yang ditambahkan.</td></tr>';
+        return;
+      }
+
+      let html = '';
+      for (let i = 0; i < resepItems.length; i++) {
+        const item = resepItems[i];
+        html += '<tr style="border-bottom:1px solid var(--glass-border);">' +
+          '<td style="padding:6px; font-weight:600;">' + item.nama + '</td>' +
+          '<td style="padding:6px; text-align:center;">' + item.jumlah + '</td>' +
+          '<td style="padding:6px;">' + item.aturan + '</td>' +
+          '<td style="padding:6px; text-align:center;"><button type="button" class="nav-btn btn-outline" style="padding:2px 6px; font-size:0.7rem; color:#ef4444; border-color:#ef4444; min-height:24px;" onclick="hapusItemResep(' + i + ')"><i class="fa-solid fa-trash"></i></button></td>' +
+        '</tr>';
+      }
+      tbody.innerHTML = html;
     }
 
     function callGeminiAiAssist() {
@@ -2393,24 +2626,147 @@
         showToast('Pilih pasien terlebih dahulu!', 'error');
         return;
       }
+
+      const labCheckboxes = document.querySelectorAll('input[name="labTests"]:checked');
+      const labTests = [];
+      for (let i = 0; i < labCheckboxes.length; i++) {
+        labTests.push(labCheckboxes[i].value);
+      }
+
       const payload = {
         kodeAntrean: activeDoctorPatient.kodeAntrean,
         nomorRm: activeDoctorPatient.nomorRm,
-        dokterId: currentUser ? currentUser.userId : 'DOC-001',
+        dokterId: currentUser ? (currentUser.dokterId || currentUser.userId) : 'DOC-015',
         tandaVital: document.getElementById('cpptVital').value,
         subjektif: document.getElementById('cpptSubjektif').value,
         objektif: document.getElementById('cpptObjektif').value,
         asesmenIcd: document.getElementById('cpptAsesmen').value,
         planTindakan: document.getElementById('cpptPlan').value,
         odontogram: odontogramState,
-        catatanAi: document.getElementById('aiRecommendationText').innerText
+        catatanAi: document.getElementById('aiRecommendationText').innerText,
+        resep: resepItems,
+        aturanPakaiGlobal: 'Sesuai rincian e-resep',
+        lab: labTests
       };
 
       runApi('saveCppt', payload)
         .then(function(res) {
           if (res && res.status === 'success') {
-            showToast('CPPT Medis berhasil disimpan!', 'success');
+            showToast('CPPT Medis, E-Resep & Order Lab berhasil disimpan!', 'success');
+            resepItems.length = 0;
+            renderResepTable();
             loadDoctorQueueData();
+          } else {
+            showToast('Gagal menyimpan CPPT: ' + (res.message || 'Error'), 'error');
+          }
+        });
+    }
+
+    function loadPharmacyOrders() {
+      const container = document.getElementById('pharmacyOrdersList');
+      if (!container) return;
+      container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem;">Memuat antrean e-resep farmasi...</div>';
+
+      runApi('getPharmacyOrders', {})
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            const list = res.list || [];
+            if (list.length === 0) {
+              container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem; padding:12px;">Belum ada resep masuk dari dokter.</div>';
+              return;
+            }
+
+            let html = '';
+            for (let i = 0; i < list.length; i++) {
+              const o = list[i];
+              html += '<div class="glass-card" style="padding:14px; border-left:4px solid #059669;">' +
+                '<div style="display:flex; justify-content:space-between; align-items:center;">' +
+                  '<strong>' + o.resepId + ' (' + o.kodeAntrean + ')</strong>' +
+                  '<span style="font-size:0.75rem; padding:2px 8px; border-radius:6px; background:' + (o.status === 'Selesai' ? '#dcfce7' : '#fed7aa') + '; font-weight:700;">' + o.status + '</span>' +
+                '</div>' +
+                '<div style="font-size:0.9rem; font-weight:700; margin:4px 0;">' + o.namaPasien + ' (' + o.nomorRm + ')</div>' +
+                '<div style="font-size:0.82rem; margin-bottom:8px;">Dokter: ' + o.dokterNama + '</div>' +
+                '<div style="background:rgba(255,255,255,0.7); padding:8px; border-radius:8px; font-size:0.8rem; margin-bottom:10px;">';
+
+              for (let j = 0; j < (o.detailObat || []).length; j++) {
+                const d = o.detailObat[j];
+                html += '<div>• ' + (d.nama || d) + ' — ' + (d.jumlah || 1) + ' (' + (d.aturan || '-') + ')</div>';
+              }
+
+              html += '</div>';
+              if (o.status !== 'Selesai') {
+                html += '<button class="nav-btn btn-primary" style="font-size:0.8rem; padding:6px 14px;" onclick="dispensePharmacyOrder(\'' + o.resepId + '\', \'' + encodeURIComponent(JSON.stringify(o.detailObat)) + '\')"><i class="fa-solid fa-check"></i> Verifikasi & Serahkan Obat (Potong Stok)</button>';
+              }
+              html += '</div>';
+            }
+            container.innerHTML = html;
+          }
+        });
+    }
+
+    function dispensePharmacyOrder(resepId, encodedItems) {
+      const items = JSON.parse(decodeURIComponent(encodedItems));
+      runApi('dispenseMedicine', { resepId: resepId, items: items, user: currentUser ? currentUser.fullName : 'APOTEKER' })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast('Resep ' + resepId + ' selesai diproses & stok terpotong.', 'success');
+            loadPharmacyOrders();
+          }
+        });
+    }
+
+    function loadLabOrders() {
+      const container = document.getElementById('labOrdersList');
+      if (!container) return;
+      container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem;">Memuat order rujukan lab...</div>';
+
+      runApi('getLabOrders', {})
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            const list = res.list || [];
+            if (list.length === 0) {
+              container.innerHTML = '<div style="color:var(--text-muted); font-size:0.85rem; padding:12px;">Belum ada order uji lab.</div>';
+              return;
+            }
+
+            let html = '';
+            for (let i = 0; i < list.length; i++) {
+              const l = list[i];
+              html += '<div class="glass-card" style="padding:14px; border-left:4px solid #0284c7;">' +
+                '<div style="display:flex; justify-content:space-between; align-items:center;">' +
+                  '<strong>' + l.labId + ' (' + l.kodeAntrean + ')</strong>' +
+                  '<span style="font-size:0.75rem; padding:2px 8px; border-radius:6px; background:' + (l.status === 'Selesai' ? '#dcfce7' : '#fed7aa') + '; font-weight:700;">' + l.status + '</span>' +
+                '</div>' +
+                '<div style="font-size:0.9rem; font-weight:700; margin:4px 0;">' + l.namaPasien + ' (' + l.nomorRm + ')</div>' +
+                '<div style="font-size:0.82rem; margin-bottom:8px;">Pemeriksaan: <strong>' + l.jenisPemeriksaan + '</strong></div>';
+
+              if (l.status !== 'Selesai') {
+                html += '<div style="display:flex; gap:6px; margin-top:8px;">' +
+                  '<input type="text" id="labHasil_' + l.labId + '" placeholder="Input Hasil Pemeriksaan..." style="padding:6px 10px; font-size:0.82rem;" />' +
+                  '<button class="nav-btn btn-primary" style="padding:6px 12px; font-size:0.8rem;" onclick="submitLabResult(\'' + l.labId + '\')"><i class="fa-solid fa-save"></i> Simpan Hasil</button>' +
+                '</div>';
+              } else {
+                html += '<div style="font-size:0.82rem; color:#059669; font-weight:600;">Hasil: ' + l.hasil + '</div>';
+              }
+              html += '</div>';
+            }
+            container.innerHTML = html;
+          }
+        });
+    }
+
+    function submitLabResult(labId) {
+      const val = document.getElementById('labHasil_' + labId).value.trim();
+      if (!val) {
+        showToast('Ketik hasil pemeriksaan lab!', 'error');
+        return;
+      }
+
+      runApi('saveLabResult', { labId: labId, hasil: val, user: currentUser ? currentUser.fullName : 'LABORAN' })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast('Hasil lab ' + labId + ' berhasil disimpan!', 'success');
+            loadLabOrders();
           }
         });
     }
@@ -2432,7 +2788,7 @@
         nomorRm: activeDoctorPatient.nomorRm,
         namaPasien: activeDoctorPatient.namaPasien,
         kodeAntrean: activeDoctorPatient.kodeAntrean,
-        dokterId: currentUser ? currentUser.userId : 'DOC-001',
+        dokterId: currentUser ? (currentUser.dokterId || currentUser.userId) : 'DOC-015',
         namaDokter: currentUser ? currentUser.fullName : 'drg. Akshara Sp.KG',
         diagnosa: document.getElementById('docDiagnosa').value,
         keterangan: document.getElementById('docKeterangan').value,
