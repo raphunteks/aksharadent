@@ -214,7 +214,7 @@
 
     @keyframes pulseGlow {
       0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
-      50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.9); }
+      50% { box-shadow: 0 0 32px rgba(56, 189, 248, 0.95); }
     }
 
     .animate-swipe-up {
@@ -802,7 +802,7 @@
     }
 
     .tv-call-box.calling {
-      animation: pulseGlow 1.5s infinite;
+      animation: pulseGlow 1.4s infinite;
     }
 
     .tv-queue-number {
@@ -1013,7 +1013,7 @@
     .toast-box.info { background: #0284c7; }
     .toast-box.groq { background: #ea580c; }
 
-    /* RESPONSIVE BREAKPOINTS (320px+ Mobile, 768px+ Tablet, 1200px+ Desktop) */
+    /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 767px) {
       .site-header { padding: 8px 12px; }
       .brand-title { font-size: 0.95rem; }
@@ -1191,7 +1191,7 @@
             <div class="slide-content">
               <span style="background:rgba(249,115,22,0.3); border:1px solid #f97316; padding:4px 10px; border-radius:16px; font-size:0.75rem; font-weight:700; color:#fed7aa;">⚡ GROQ LPU AI AGENT & TTS</span>
               <h1>Diferensial Diagnosa & Panggilan Suara AI</h1>
-              <p>Didukung Groq LPU AI Medical Agent (GPT-OSS 120B / Qwen 3.8) dan suara panggilan antrean ekspresif bertenaga Canopy Labs Orpheus AI Text-to-Speech.</p>
+              <p>Didukung Groq LPU AI Medical Agent (GPT-OSS 120B / Qwen 3.8) dan suara panggilan antrean ekspresif bertenaga Canopy Labs Orpheus AI Text-to-Speech (Suara Abdullah & Hannah).</p>
               <a href="#reservasi" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-hospital-user"></i> Cek Nomor Antrean</a>
             </div>
           </article>
@@ -1240,9 +1240,7 @@
           <h2>Profil Tenaga Medis Profesional</h2>
           <p>Dokter spesialis dan dokter gigi yang berpraktek di Klinik Akshara Dental Space</p>
         </div>
-        <div id="doctorListContainer" class="services-grid">
-          <!-- Populated dynamically via JS -->
-        </div>
+        <div id="doctorListContainer" class="services-grid"></div>
       </section>
 
       <!-- Form Reservasi Mandiri Pasien -->
@@ -1301,9 +1299,7 @@
               </div>
               <div class="form-group">
                 <label for="resDokterSelect">Pilih Dokter & Poliklinik *</label>
-                <select id="resDokterSelect" required>
-                  <!-- Populated dynamically via JS -->
-                </select>
+                <select id="resDokterSelect" required></select>
               </div>
               <div class="form-group full">
                 <label for="resAlamat">Alamat Domisili Lengkap *</label>
@@ -1383,22 +1379,23 @@
             <div>
               <h1 style="font-size:1.4rem; font-weight:800; display:flex; align-items:center; gap:8px;">
                 <span>MONITOR RUANG ANTREAN</span>
-                <span class="groq-badge-audio"><i class="fa-solid fa-volume-high"></i> GROQ AI TTS</span>
+                <span class="groq-badge-audio"><i class="fa-solid fa-volume-high"></i> GROQ AI TTS (ORPHEUS)</span>
               </h1>
-              <p style="color:#94a3b8; font-size:0.85rem;">Klinik Akshara Dental Space — Panggilan Suara AI Orpheus & Chime</p>
+              <p style="color:#94a3b8; font-size:0.85rem;">Klinik Akshara Dental Space — Panggilan Suara AI Orpheus Saudi & Chime</p>
             </div>
           </div>
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
             <!-- AI Audio Engine Settings on TV Bar -->
             <select id="tvVoiceEngine" style="background:#1e293b; color:#38bdf8; border-color:#38bdf8; padding:8px 10px; font-size:0.82rem; font-weight:700;">
-              <option value="groq-orpheus" selected>🎙️ Groq AI TTS (canopylabs/orpheus-v1-english)</option>
-              <option value="groq-orpheus-saudi">🎙️ Groq AI TTS (canopylabs/orpheus-arabic-saudi)</option>
+              <option value="canopylabs/orpheus-arabic-saudi" selected>🎙️ Groq TTS (canopylabs/orpheus-arabic-saudi)</option>
+              <option value="canopylabs/orpheus-v1-english">🎙️ Groq TTS (canopylabs/orpheus-v1-english)</option>
               <option value="web-speech">🔊 Web Speech Native (Bahasa Indonesia)</option>
             </select>
             <select id="tvVoicePersona" style="background:#1e293b; color:#fff; border-color:#334155; padding:8px 10px; font-size:0.82rem;">
-              <option value="hannah" selected>Hannah (Ramah & Hangat)</option>
-              <option value="diana">Diana (Resmi & Jelas)</option>
-              <option value="autumn">Autumn (Ekspresif)</option>
+              <option value="abdullah" selected>Abdullah (Suara Pria Jelas & Santun)</option>
+              <option value="hannah">Hannah (Suara Wanita Ramah & Hangat)</option>
+              <option value="diana">Diana (Suara Wanita Resmi & Jelas)</option>
+              <option value="autumn">Autumn (Suara Wanita Ekspresif)</option>
               <option value="austin">Austin (Suara Pria Lugas)</option>
               <option value="daniel">Daniel (Suara Pria Tenang)</option>
               <option value="troy">Troy (Suara Pria Tegas)</option>
@@ -1425,7 +1422,7 @@
             <div id="tvCurrentRoom" style="font-size:1.8rem; font-weight:800; color:#ffffff; margin-bottom:6px;">Menunggu Pasien...</div>
             <div id="tvCurrentDoctor" style="font-size:1rem; color:#94a3b8;">Silakan persiapkan kartu identitas Anda</div>
             <div id="tvAudioStatusBadge" style="margin-top:14px; font-size:0.75rem; color:#38bdf8; font-weight:700; display:none;">
-              <i class="fa-solid fa-waveform-lines fa-fade"></i> AI Voice Sedang Mengumumkan Panggilan...
+              <i class="fa-solid fa-waveform-lines fa-fade"></i> AI Voice (Groq Orpheus) Sedang Memanggil Pasien...
             </div>
           </div>
 
@@ -1433,9 +1430,7 @@
             <h3 style="font-size:1.1rem; font-weight:700; color:#38bdf8; margin-bottom:14px; border-bottom:1px solid #334155; padding-bottom:8px;">
               <i class="fa-solid fa-list-ol"></i> 5 Antrean Berikutnya
             </h3>
-            <div id="tvNextList" style="display:flex; flex-direction:column; gap:10px;">
-              <!-- Populated dynamically via JS -->
-            </div>
+            <div id="tvNextList" style="display:flex; flex-direction:column; gap:10px;"></div>
           </div>
         </div>
       </div>
@@ -1752,7 +1747,7 @@
           <div class="glass-card" style="padding:20px; border:1.5px solid #f97316;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
               <h3 style="font-size:1.1rem; font-weight:800; color:#ea580c;">
-                <i class="fa-solid fa-bolt"></i> Konfigurasi Groq AI Agent
+                <i class="fa-solid fa-bolt"></i> Konfigurasi Groq AI Agent & TTS
               </h3>
               <span class="groq-badge">LPU Inference</span>
             </div>
@@ -1766,7 +1761,7 @@
             </div>
 
             <div class="form-group" style="margin-bottom:10px;">
-              <label for="adminGroqModelSelect">Model AI Groq (Chat / EMR)</label>
+              <label for="adminGroqModelSelect">Model AI Groq (Chat / EMR / Reasoning)</label>
               <select id="adminGroqModelSelect" onchange="syncAdminGroqModel(this.value)">
                 <optgroup label="Model Diagnosa Klinis & Reasoning (Chat / EMR)">
                   <option value="openai/gpt-oss-120b" selected>openai/gpt-oss-120b (Flagship Reasoning - Rekomendasi)</option>
@@ -1777,8 +1772,8 @@
                   <option value="groq/compound-mini">groq/compound-mini (Compound Mini Lightweight)</option>
                 </optgroup>
                 <optgroup label="Model Text-to-Speech (Suara Panggil Antrean)">
-                  <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english (Expressive TTS)</option>
-                  <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi (Saudi Dialect TTS)</option>
+                  <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi (Saudi Dialect TTS - Rekomendasi Abdullah)</option>
+                  <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english (Expressive TTS English)</option>
                 </optgroup>
                 <optgroup label="Model Transkripsi Audio (Speech-to-Text)">
                   <option value="whisper-large-v3-turbo">whisper-large-v3-turbo (Whisper STT Turbo)</option>
@@ -1792,29 +1787,30 @@
               </select>
             </div>
 
-            <!-- KONFIGURASI SUARA PANGGIL PASIEN ANTREAN -->
+            <!-- KONFIGURASI SUARA PANGGIL PASIEN ANTREAN SESUAI SDK GROQ -->
             <div style="border-top:1px solid #fed7aa; padding-top:10px; margin-top:10px;">
               <h4 style="font-size:0.9rem; font-weight:800; color:#ea580c; margin-bottom:8px;">
-                <i class="fa-solid fa-volume-high"></i> Pengaturan Suara Panggil Pasien (Text-to-Speech)
+                <i class="fa-solid fa-volume-high"></i> Pengaturan Suara Panggil Pasien (Groq AI Audio Speech)
               </h4>
               <div class="form-grid" style="grid-template-columns:1fr 1fr; gap:10px;">
                 <div class="form-group">
                   <label for="adminTtsModelSelect">Model AI TTS</label>
                   <select id="adminTtsModelSelect">
-                    <option value="canopylabs/orpheus-v1-english" selected>canopylabs/orpheus-v1-english</option>
-                    <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi</option>
+                    <option value="canopylabs/orpheus-arabic-saudi" selected>canopylabs/orpheus-arabic-saudi (Rekomendasi Utama)</option>
+                    <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english</option>
                     <option value="web-speech">Native Web Speech (Bahasa Indonesia)</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="adminTtsVoicePersona">Voice Persona Orpheus</label>
                   <select id="adminTtsVoicePersona">
-                    <option value="hannah" selected>Hannah (Female - Warm)</option>
-                    <option value="diana">Diana (Female - Professional)</option>
-                    <option value="autumn">Autumn (Female - Expressive)</option>
-                    <option value="austin">Austin (Male - Clear)</option>
-                    <option value="daniel">Daniel (Male - Calm)</option>
-                    <option value="troy">Troy (Male - Authoritative)</option>
+                    <option value="abdullah" selected>abdullah (Suara Pria Jelas & Santun)</option>
+                    <option value="hannah">hannah (Female - Warm & Friendly)</option>
+                    <option value="diana">diana (Female - Professional)</option>
+                    <option value="autumn">autumn (Female - Expressive)</option>
+                    <option value="austin">austin (Male - Clear)</option>
+                    <option value="daniel">daniel (Male - Calm)</option>
+                    <option value="troy">troy (Male - Authoritative)</option>
                   </select>
                 </div>
               </div>
@@ -2073,10 +2069,11 @@
     const odontogramState = {};
     let groqConversation = [];
     let systemGroqKey = '';
-    // Model AI Default Sesuai Allowed Models Project
+
+    // MODEL AI SESUAI DAFTAR ALLOWED MODELS & SDK GROQ RESMI
     let systemGroqModel = 'openai/gpt-oss-120b';
-    let systemTtsModel = 'canopylabs/orpheus-v1-english';
-    let systemTtsVoice = 'hannah';
+    let systemTtsModel = 'canopylabs/orpheus-arabic-saudi';
+    let systemTtsVoice = 'abdullah';
 
     window.addEventListener('DOMContentLoaded', function() {
       initTheme();
@@ -2195,7 +2192,10 @@
             populateDoctorSelect(clinicDoctors);
             if (res.settings) {
               systemGroqModel = res.settings.GROQ_MODEL || 'openai/gpt-oss-120b';
+              systemTtsModel = res.settings.GROQ_TTS_MODEL || 'canopylabs/orpheus-arabic-saudi';
+              systemTtsVoice = res.settings.GROQ_TTS_VOICE || 'abdullah';
               syncModelSelectors(systemGroqModel);
+              syncTtsSelectors(systemTtsModel, systemTtsVoice);
             }
           }
         })
@@ -2209,6 +2209,18 @@
       if (adminSel) adminSel.value = modelName;
       const docSel = document.getElementById('doctorGroqQuickModel');
       if (docSel) docSel.value = modelName;
+    }
+
+    function syncTtsSelectors(modelName, voiceName) {
+      const adminTtsSel = document.getElementById('adminTtsModelSelect');
+      if (adminTtsSel) adminTtsSel.value = modelName;
+      const adminVoiceSel = document.getElementById('adminTtsVoicePersona');
+      if (adminVoiceSel) adminVoiceSel.value = voiceName;
+
+      const tvTtsSel = document.getElementById('tvVoiceEngine');
+      if (tvTtsSel) tvTtsSel.value = modelName;
+      const tvVoiceSel = document.getElementById('tvVoicePersona');
+      if (tvVoiceSel) tvVoiceSel.value = voiceName;
     }
 
     function switchDoctorGroqModel(modelName) {
@@ -2418,7 +2430,14 @@
     }
 
     // =========================================================================
-    // GROQ AI TEXT-TO-SPEECH (CANOPY LABS ORPHEUS) & QUEUE ANNOUNCEMENT ENGINE
+    // GROQ AI TEXT-TO-SPEECH (CANOPY LABS ORPHEUS SAUDI & ENGLISH)
+    // Sesuai kode resmi Groq SDK:
+    // groq.audio.speech.create({
+    //   model: "canopylabs/orpheus-arabic-saudi",
+    //   voice: "abdullah",
+    //   response_format: "wav",
+    //   input: "Selamat datang"
+    // })
     // =========================================================================
 
     let tvPollingInterval = null;
@@ -2506,16 +2525,26 @@
 
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.2); // A5
-        osc.frequency.setValueAtTime(1174.66, audioCtx.currentTime + 0.4); // D6
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.18); // A5
+        osc.frequency.setValueAtTime(1174.66, audioCtx.currentTime + 0.38); // D6
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.85);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.75);
 
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.85);
+        osc.stop(audioCtx.currentTime + 0.75);
       } catch (e) {
-        console.warn('Audio chime error:', e);
+        console.warn('Audio chime warning:', e);
       }
+    }
+
+    // Mengonversi kode antrean seperti ANT-20260903-0001 menjadi format lafal Indonesia yang ramah
+    function formatKodeForSpeech(kode) {
+      if (!kode) return 'A N T';
+      const parts = kode.split('-');
+      const last = parts[parts.length - 1];
+      const numVal = parseInt(last, 10);
+      const friendlyNum = !isNaN(numVal) ? numVal.toString() : last;
+      return "A N T " + friendlyNum;
     }
 
     function announceQueueWithAiVoice(kode, poli, dokter) {
@@ -2525,40 +2554,38 @@
       const badge = document.getElementById('tvAudioStatusBadge');
       if (badge) badge.style.display = 'block';
 
-      // 1. Play professional chime
+      // 1. Bunyikan lonceng selamat datang / chime
       playAudioChime();
 
-      // 2. Prepare text for AI Text-to-Speech
-      // Format sebutan angka antrean agar jernih dan berintonasi ramah
-      const formattedKode = kode.replace(/-/g, ' ');
-      const cleanRoom = poli || 'Poli Gigi';
-
-      // Pilihan engine dan model TTS (Groq Canopy Labs Orpheus)
       const engineSelect = document.getElementById('tvVoiceEngine');
-      const selectedEngine = engineSelect ? engineSelect.value : 'groq-orpheus';
+      const selectedModel = engineSelect ? engineSelect.value : (systemTtsModel || 'canopylabs/orpheus-arabic-saudi');
+      
       const personaSelect = document.getElementById('tvVoicePersona');
-      const selectedVoice = personaSelect ? personaSelect.value : (systemTtsVoice || 'hannah');
+      const selectedVoice = personaSelect ? personaSelect.value : (systemTtsVoice || 'abdullah');
+
+      const friendlyKode = formatKodeForSpeech(kode);
+      const cleanRoom = poli || 'ruang periksa poli gigi';
+
+      // Teks panggilan bahasa Indonesia resmi klinik
+      const indonesianInput = "Nomor antrean, " + friendlyKode + ". Silakan menuju ke " + cleanRoom + ". Terima kasih.";
 
       setTimeout(function() {
-        if (selectedEngine === 'web-speech' || !systemGroqKey) {
-          executeNativeWebSpeechAnnouncement(kode, cleanRoom, function() {
+        if (selectedModel === 'web-speech' || !systemGroqKey) {
+          executeNativeWebSpeechAnnouncement(indonesianInput, function() {
             isCurrentlyAnnouncing = false;
             if (badge) badge.style.display = 'none';
           });
         } else {
-          executeGroqOrpheusTts(kode, cleanRoom, selectedEngine, selectedVoice, function() {
+          executeGroqAudioSpeech(selectedModel, selectedVoice, indonesianInput, function() {
             isCurrentlyAnnouncing = false;
             if (badge) badge.style.display = 'none';
           });
         }
-      }, 900);
+      }, 700);
     }
 
-    function executeGroqOrpheusTts(kode, ruangan, engineType, voicePersona, callback) {
-      const model = engineType === 'groq-orpheus-saudi' ? 'canopylabs/orpheus-arabic-saudi' : 'canopylabs/orpheus-v1-english';
-      // Orpheus English supports vocal directions like [cheerful], [clear], [professionally]
-      const announcementText = '[professionally] Attention please. Queue number ' + kode.replace(/-/g, ' ') + ', please proceed to ' + ruangan + '.';
-
+    // Menjalankan permintaan resmi Groq Audio Speech create ({ model, voice, response_format, input })
+    function executeGroqAudioSpeech(model, voice, inputSpeechText, callback) {
       fetch('https://api.groq.com/openai/v1/audio/speech', {
         method: 'POST',
         headers: {
@@ -2566,14 +2593,14 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: model,
-          input: announcementText,
-          voice: voicePersona || 'hannah',
-          response_format: 'wav'
+          model: model || 'canopylabs/orpheus-arabic-saudi',
+          voice: voice || 'abdullah',
+          response_format: 'wav',
+          input: inputSpeechText
         })
       })
       .then(function(res) {
-        if (!res.ok) throw new Error('Groq TTS status: ' + res.status);
+        if (!res.ok) throw new Error('Groq TTS HTTP ' + res.status);
         return res.blob();
       })
       .then(function(blob) {
@@ -2581,29 +2608,27 @@
         const audio = new Audio(audioUrl);
         audio.onended = function() {
           URL.revokeObjectURL(audioUrl);
-          // Ulangi panggilan dalam bahasa Indonesia ramah
-          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+          if (callback) callback();
         };
         audio.onerror = function() {
-          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+          executeNativeWebSpeechAnnouncement(inputSpeechText, callback);
         };
         audio.play().catch(function() {
-          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+          executeNativeWebSpeechAnnouncement(inputSpeechText, callback);
         });
       })
       .catch(function(err) {
-        console.warn('Groq Orpheus TTS fallback to Web Speech:', err);
-        executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+        console.warn('Groq Audio Speech fallback to WebSpeech:', err);
+        executeNativeWebSpeechAnnouncement(inputSpeechText, callback);
       });
     }
 
-    function executeNativeWebSpeechAnnouncement(kode, ruangan, callback) {
+    function executeNativeWebSpeechAnnouncement(text, callback) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const speechText = 'Nomor antrean, ' + kode.replace(/-/g, ' ') + ', silakan menuju ke ' + ruangan;
-        const utterance = new SpeechSynthesisUtterance(speechText);
+        const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'id-ID';
-        utterance.rate = 0.88;
+        utterance.rate = 0.9;
         utterance.pitch = 1.05;
         utterance.onend = function() {
           if (callback) callback();
@@ -2618,11 +2643,11 @@
     }
 
     function testQueueVoiceAnnouncement() {
-      showToast('Menguji pemanggilan suara AI Text-to-Speech...', 'groq');
-      announceQueueWithAiVoice('ANT-TEST-001', 'Poli Gigi & Spesialis', 'drg. Akshara Sp.KG');
+      showToast('Menguji pemanggilan suara AI Groq Orpheus...', 'groq');
+      announceQueueWithAiVoice('ANT-20260903-0001', 'Poli Gigi & Spesialis', 'drg. Akshara Sp.KG');
     }
 
-    // SPEECH RECOGNITION (WHISPER LARGE V3 TURBO FALLBACK INTEGRATION)
+    // SPEECH RECOGNITION / DIKTE SUARA DOKTER
     let speechRecognitionInstance = null;
     function toggleSpeechRecognition(targetFieldId) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -2647,7 +2672,7 @@
       speechRecognitionInstance.interimResults = false;
 
       if (icon) icon.style.color = '#ef4444';
-      showToast('Mendengarkan suara dokter (Whisper turbo / native)...', 'info');
+      showToast('Mendengarkan suara dokter (Whisper STT / Native)...', 'info');
 
       speechRecognitionInstance.onresult = function(event) {
         const transcript = event.results[0][0].transcript;
@@ -2873,7 +2898,6 @@
                  .replace(/'/g, "&#039;");
     }
 
-    // AUTHENTICATION & PORTAL DASHBOARD
     function openLoginModal() {
       document.getElementById('loginModal').classList.add('show');
     }
@@ -3450,11 +3474,15 @@
                 systemTtsModel = res.settings.GROQ_TTS_MODEL;
                 const ttsSel = document.getElementById('adminTtsModelSelect');
                 if (ttsSel) ttsSel.value = systemTtsModel;
+                const tvTtsSel = document.getElementById('tvVoiceEngine');
+                if (tvTtsSel) tvTtsSel.value = systemTtsModel;
               }
               if (res.settings.GROQ_TTS_VOICE) {
                 systemTtsVoice = res.settings.GROQ_TTS_VOICE;
                 const voiceSel = document.getElementById('adminTtsVoicePersona');
                 if (voiceSel) voiceSel.value = systemTtsVoice;
+                const tvVoiceSel = document.getElementById('tvVoicePersona');
+                if (tvVoiceSel) tvVoiceSel.value = systemTtsVoice;
               }
               if (res.settings.GEMINI_API_KEY) {
                 document.getElementById('adminGeminiKeyInput').value = res.settings.GEMINI_API_KEY;
@@ -3546,8 +3574,8 @@
     function saveGroqSettings() {
       const k = document.getElementById('adminGroqKeyInput').value.trim();
       const m = document.getElementById('adminGroqModelSelect').value;
-      const ttsM = document.getElementById('adminTtsModelSelect') ? document.getElementById('adminTtsModelSelect').value : 'canopylabs/orpheus-v1-english';
-      const ttsV = document.getElementById('adminTtsVoicePersona') ? document.getElementById('adminTtsVoicePersona').value : 'hannah';
+      const ttsM = document.getElementById('adminTtsModelSelect') ? document.getElementById('adminTtsModelSelect').value : 'canopylabs/orpheus-arabic-saudi';
+      const ttsV = document.getElementById('adminTtsVoicePersona') ? document.getElementById('adminTtsVoicePersona').value : 'abdullah';
 
       systemGroqKey = k;
       systemGroqModel = m;
@@ -3555,6 +3583,7 @@
       systemTtsVoice = ttsV;
 
       syncModelSelectors(m);
+      syncTtsSelectors(ttsM, ttsV);
 
       runApi('updateSystemSettings', {
         adminUserId: currentUser ? currentUser.userId : 'ADMIN',
@@ -3576,7 +3605,7 @@
               configKey: 'GROQ_TTS_VOICE',
               configValue: ttsV
             }).then(function() {
-              showToast('Model Groq Chat & AI TTS berhasil disimpan!', 'success');
+              showToast('Konfigurasi Groq Chat & AI TTS berhasil disimpan!', 'success');
             });
           });
         });
