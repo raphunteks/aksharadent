@@ -8,7 +8,7 @@
   <title>Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar</title>
   <meta name="google-site-verification" content="cbSE7olGd0ibEx_bhjC3aitjIovXCSwUKYbVOh7nbLs" />
   <meta name="title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi spesialis & poliklinik medis terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, konsultasi Groq AI Medical Agent, e-resep farmasi, rujukan lab, dan TV antrean pintar bersuara otomatis." />
+  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi spesialis & poliklinik medis terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, konsultasi Groq AI Medical Agent (GPT-OSS 120B / Qwen 3.8), e-resep farmasi, rujukan lab, dan TV antrean pintar bersuara otomatis." />
   <meta name="keywords" content="klinik gigi makassar, dokter gigi spesialis makassar, akshara dental space, aksharadental vercel, behel makassar, ortodontis makassar, pasang kawat gigi makassar, dokter bedah mulut makassar, tambal gigi estetik, perawatan saluran akar, pembersihan karang gigi scaling, klinik spesialis makassar, dokter anak makassar, dokter penyakit dalam makassar, reservasi klinik gigi online makassar" />
   <meta name="author" content="Klinik Akshara Dental Space" />
   <meta name="publisher" content="Klinik Akshara Dental Space" />
@@ -210,11 +210,6 @@
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.92); }
       to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes pulseAi {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.75; transform: scale(1.03); }
     }
 
     .animate-swipe-up {
@@ -996,160 +991,51 @@
     .toast-box.info { background: #0284c7; }
     .toast-box.groq { background: #ea580c; }
 
-    /* -------------------------------------------------------------
-       RESPONSIVE BREAKPOINTS (320px+ Mobile, 768px+ Tablet, 1200px+ Desktop)
-       ------------------------------------------------------------- */
-    
-    /* 1. MOBILE ONLY (< 768px) */
+    /* RESPONSIVE BREAKPOINTS (320px+ Mobile, 768px+ Tablet, 1200px+ Desktop) */
     @media (max-width: 767px) {
-      .site-header {
-        padding: 8px 12px;
-      }
-      .brand-title {
-        font-size: 0.95rem;
-      }
-      .brand-subtitle {
-        display: none;
-      }
-      .brand-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-      }
-      .nav-links {
-        display: none !important;
-      }
-      .header-extra-btn {
-        display: none !important;
-      }
-      #themeLabel {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-
-      .hero-section {
-        padding: 10px;
-      }
-      .slider-container {
-        height: 370px;
-        border-radius: 18px;
-      }
-      .slide-item {
-        padding: 22px 16px;
-        align-items: flex-end;
-      }
-      .slide-content h1 {
-        font-size: 1.35rem;
-        margin-bottom: 8px;
-      }
-      .slide-content p {
-        font-size: 0.84rem;
-        margin-bottom: 16px;
-      }
-
-      .container {
-        padding: 24px 10px;
-      }
-      .section-title {
-        margin-bottom: 24px;
-      }
-      .section-title h2 {
-        font-size: 1.5rem;
-      }
-
-      .reservasi-card {
-        padding: 18px 12px;
-        border-radius: 16px;
-      }
-      .form-tabs {
-        flex-direction: column;
-        gap: 6px;
-      }
-      .tab-btn {
-        width: 100%;
-        justify-content: center;
-      }
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .form-group.full {
-        grid-column: span 1;
-      }
-
-      .wa-float-container {
-        bottom: 16px;
-        right: 14px;
-      }
-      .wa-float-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-      }
-      .scroll-top-btn {
-        bottom: 74px;
-        right: 14px;
-        width: 42px;
-        height: 42px;
-      }
-      .wa-chat-box {
-        width: calc(100vw - 28px);
-      }
-
-      .tv-main-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .tv-queue-number {
-        font-size: 3.5rem;
-      }
+      .site-header { padding: 8px 12px; }
+      .brand-title { font-size: 0.95rem; }
+      .brand-subtitle { display: none; }
+      .brand-icon { width: 36px; height: 36px; border-radius: 10px; }
+      .nav-links, .header-extra-btn, #themeLabel { display: none !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .hero-section { padding: 10px; }
+      .slider-container { height: 370px; border-radius: 18px; }
+      .slide-item { padding: 22px 16px; align-items: flex-end; }
+      .slide-content h1 { font-size: 1.35rem; margin-bottom: 8px; }
+      .slide-content p { font-size: 0.84rem; margin-bottom: 16px; }
+      .container { padding: 24px 10px; }
+      .section-title { margin-bottom: 24px; }
+      .section-title h2 { font-size: 1.5rem; }
+      .reservasi-card { padding: 18px 12px; border-radius: 16px; }
+      .form-tabs { flex-direction: column; gap: 6px; }
+      .tab-btn { width: 100%; justify-content: center; }
+      .form-grid { grid-template-columns: 1fr; gap: 12px; }
+      .form-group.full { grid-column: span 1; }
+      .wa-float-container { bottom: 16px; right: 14px; }
+      .wa-float-btn { width: 48px; height: 48px; font-size: 1.5rem; }
+      .scroll-top-btn { bottom: 74px; right: 14px; width: 42px; height: 42px; }
+      .wa-chat-box { width: calc(100vw - 28px); }
+      .tv-main-grid { grid-template-columns: 1fr; gap: 16px; }
+      .tv-queue-number { font-size: 3.5rem; }
     }
 
-    /* 2. TABLET (768px - 1199px) */
     @media (min-width: 768px) and (max-width: 1199px) {
-      .nav-links {
-        display: none !important;
-      }
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-      .slider-container {
-        height: 410px;
-      }
-      .slide-content h1 {
-        font-size: 1.85rem;
-      }
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      .reservasi-card {
-        padding: 28px 22px;
-      }
-      .tv-main-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { display: none !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .slider-container { height: 410px; }
+      .slide-content h1 { font-size: 1.85rem; }
+      .form-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .reservasi-card { padding: 28px 22px; }
+      .tv-main-grid { grid-template-columns: 1fr; }
     }
 
-    /* 3. DESKTOP (1200px+) */
     @media (min-width: 1200px) {
-      .mobile-menu-btn {
-        display: none !important;
-      }
-      .nav-links {
-        display: flex !important;
-      }
-      .slider-container {
-        height: 460px;
-      }
-      .slide-content h1 {
-        font-size: 2.3rem;
-      }
-      .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .mobile-menu-btn { display: none !important; }
+      .nav-links { display: flex !important; }
+      .slider-container { height: 460px; }
+      .slide-content h1 { font-size: 2.3rem; }
+      .services-grid { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
@@ -1204,7 +1090,7 @@
       <li class="nav-item"><a href="#kontak" onclick="switchView('landing')">Kontak</a></li>
     </nav>
 
-    <!-- Header Actions (Responsive Compact) -->
+    <!-- Header Actions -->
     <div class="header-actions">
       <button class="nav-btn btn-outline" id="themeToggleBtn" onclick="toggleTheme()" title="Ubah Tema Warna">
         <i class="fa-solid fa-circle-half-stroke"></i> <span id="themeLabel">Tema Putih</span>
@@ -1283,7 +1169,7 @@
             <div class="slide-content">
               <span style="background:rgba(249,115,22,0.3); border:1px solid #f97316; padding:4px 10px; border-radius:16px; font-size:0.75rem; font-weight:700; color:#fed7aa;">⚡ GROQ LPU AI AGENT</span>
               <h1>Diferensial Diagnosa Berkecepatan Kilat</h1>
-              <p>Didukung Groq LPU AI Medical Agent untuk diagnosis ICD-10, validasi resep anti-alergi, dan konsultasi interaktif dokter dalam hitungan milidetik.</p>
+              <p>Didukung Groq LPU AI Medical Agent (openai/gpt-oss-120b & qwen3.8-27b) untuk diagnosis ICD-10, validasi resep anti-alergi, dan konsultasi interaktif dokter dalam hitungan milidetik.</p>
               <a href="#reservasi" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-hospital-user"></i> Cek Nomor Antrean</a>
             </div>
           </article>
@@ -1585,7 +1471,12 @@
             </div>
 
             <div class="form-group" style="margin-bottom:8px;">
-              <label for="cpptSubjektif">Subjektif (Anamnesa / Keluhan Pasien)</label>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label for="cpptSubjektif">Subjektif (Anamnesa / Keluhan Pasien)</label>
+                <button type="button" class="nav-btn btn-outline" style="padding:2px 8px; font-size:0.72rem; min-height:26px;" onclick="toggleSpeechRecognition('cpptSubjektif')">
+                  <i class="fa-solid fa-microphone" id="micIcon_cpptSubjektif"></i> Dikte Suara
+                </button>
+              </div>
               <textarea id="cpptSubjektif" rows="2" placeholder="Pasien mengeluhkan..."></textarea>
             </div>
             <div class="form-group" style="margin-bottom:8px;">
@@ -1606,9 +1497,16 @@
             <!-- GROQ AI AGENT CLINICAL BOX -->
             <div id="groqAiAgentBox" style="display:none;" class="groq-agent-box">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
-                <div style="display:flex; align-items:center; gap:8px;">
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                   <span class="groq-badge"><i class="fa-solid fa-bolt"></i> GROQ LPU AI AGENT</span>
-                  <span id="groqModelBadge" style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">llama-3.3-70b-versatile</span>
+                  <select id="doctorGroqQuickModel" onchange="switchDoctorGroqModel(this.value)" style="font-size:0.72rem; font-weight:700; padding:2px 8px; width:auto; background:#fff; border-color:#f97316; height:28px;">
+                    <option value="openai/gpt-oss-120b" selected>openai/gpt-oss-120b (Flagship Reasoning)</option>
+                    <option value="qwen/qwen3.8-27b">qwen/qwen3.8-27b (High Intelligence)</option>
+                    <option value="openai/gpt-oss-20b">openai/gpt-oss-20b (Ultra Fast)</option>
+                    <option value="qwen/qwen3.6-27b">qwen/qwen3.6-27b (Fast Reasoning)</option>
+                    <option value="groq/compound">groq/compound (Compound Agent)</option>
+                    <option value="groq/compound-mini">groq/compound-mini (Compound Mini)</option>
+                  </select>
                 </div>
                 <div style="display:flex; gap:6px;">
                   <button type="button" class="nav-btn btn-outline" style="padding:2px 8px; font-size:0.7rem; min-height:26px;" onclick="applyAiDiagnosis()">
@@ -1815,7 +1713,7 @@
             </div>
             
             <div class="form-group" style="margin-bottom:10px;">
-              <label for="adminGroqKeyInput">GROQ_API_KEY (Free API Key)</label>
+              <label for="adminGroqKeyInput">GROQ_API_KEY (Project API Key)</label>
               <div style="display:flex; gap:6px;">
                 <input type="password" id="adminGroqKeyInput" placeholder="gsk_..." style="flex:1;" />
                 <button class="nav-btn btn-outline" type="button" onclick="togglePasswordEye('adminGroqKeyInput')"><i class="fa-solid fa-eye"></i></button>
@@ -1823,17 +1721,32 @@
             </div>
 
             <div class="form-group" style="margin-bottom:10px;">
-              <label for="adminGroqModelSelect">Model AI Groq</label>
-              <select id="adminGroqModelSelect">
-                <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Direkomendasikan - Diagnosa Kompleks)</option>
-                <option value="llama-3.1-8b-instant">llama-3.1-8b-instant (Super Cepat - Triage & SOAP Ringkas)</option>
-                <option value="mixtral-8x7b-32768">mixtral-8x7b-32768 (MoE Cepat & 32k Konteks)</option>
-                <option value="gemma2-9b-it">gemma2-9b-it (Google Gemma 2 via Groq)</option>
+              <label for="adminGroqModelSelect">Model AI Groq (Sesuai Allowed Models Project)</label>
+              <select id="adminGroqModelSelect" onchange="syncAdminGroqModel(this.value)">
+                <optgroup label="Model Diagnosa Klinis & Reasoning (Chat / EMR)">
+                  <option value="openai/gpt-oss-120b" selected>openai/gpt-oss-120b (Flagship Reasoning - Direkomendasikan)</option>
+                  <option value="qwen/qwen3.8-27b">qwen/qwen3.8-27b (High Intelligence & Multilingual)</option>
+                  <option value="openai/gpt-oss-20b">openai/gpt-oss-20b (Ultra Cepat - Triage & SOAP)</option>
+                  <option value="qwen/qwen3.6-27b">qwen/qwen3.6-27b (Respon Kilat & Efisien)</option>
+                  <option value="groq/compound">groq/compound (Compound Reasoning Agent)</option>
+                  <option value="groq/compound-mini">groq/compound-mini (Compound Mini Lightweight)</option>
+                  <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english (Orpheus v1 English)</option>
+                  <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi (Orpheus Arabic Saudi)</option>
+                </optgroup>
+                <optgroup label="Model Safeguard & Moderasi">
+                  <option value="openai/gpt-oss-safeguard-20b">openai/gpt-oss-safeguard-20b (Safety & Medical Safeguard)</option>
+                  <option value="meta-llama/llama-prompt-guard-2-86m">meta-llama/llama-prompt-guard-2-86m (Prompt Guard 86M)</option>
+                  <option value="meta-llama/llama-prompt-guard-2-22m">meta-llama/llama-prompt-guard-2-22m (Prompt Guard 22M)</option>
+                </optgroup>
+                <optgroup label="Model Audio Transkripsi (Speech-to-Text)">
+                  <option value="whisper-large-v3-turbo">whisper-large-v3-turbo (Speech Recognition Turbo)</option>
+                  <option value="whisper-large-v3">whisper-large-v3 (Speech Recognition Accurate)</option>
+                </optgroup>
               </select>
             </div>
 
             <div class="form-group" style="margin-bottom:14px;">
-              <label for="adminGroqTemperature">Temperatur / Kreativitas (0.1 - 0.7)</label>
+              <label for="adminGroqTemperature">Temperatur / Presisi Medis (0.1 - 0.5)</label>
               <input type="number" id="adminGroqTemperature" min="0" max="1" step="0.1" value="0.2" placeholder="0.2 (Presisi Medis)" />
             </div>
 
@@ -2083,7 +1996,8 @@
     const odontogramState = {};
     let groqConversation = [];
     let systemGroqKey = '';
-    let systemGroqModel = 'llama-3.3-70b-versatile';
+    // Model default menggunakan flagship reasoning model dari allowed models project
+    let systemGroqModel = 'openai/gpt-oss-120b';
 
     window.addEventListener('DOMContentLoaded', function() {
       initTheme();
@@ -2201,15 +2115,34 @@
             renderDoctorCards(clinicDoctors);
             populateDoctorSelect(clinicDoctors);
             if (res.settings) {
-              systemGroqModel = res.settings.GROQ_MODEL || 'llama-3.3-70b-versatile';
-              const badge = document.getElementById('groqModelBadge');
-              if (badge) badge.innerText = systemGroqModel;
+              systemGroqModel = res.settings.GROQ_MODEL || 'openai/gpt-oss-120b';
+              syncModelSelectors(systemGroqModel);
             }
           }
         })
         .catch(function(err) {
           console.error('Error loadPublicData:', err);
         });
+    }
+
+    function syncModelSelectors(modelName) {
+      const adminSel = document.getElementById('adminGroqModelSelect');
+      if (adminSel) adminSel.value = modelName;
+      const docSel = document.getElementById('doctorGroqQuickModel');
+      if (docSel) docSel.value = modelName;
+    }
+
+    function switchDoctorGroqModel(modelName) {
+      systemGroqModel = modelName;
+      const adminSel = document.getElementById('adminGroqModelSelect');
+      if (adminSel) adminSel.value = modelName;
+      showToast('Model AI diubah ke: ' + modelName, 'info');
+    }
+
+    function syncAdminGroqModel(modelName) {
+      systemGroqModel = modelName;
+      const docSel = document.getElementById('doctorGroqQuickModel');
+      if (docSel) docSel.value = modelName;
     }
 
     function renderDoctorCards(doctors) {
@@ -2405,14 +2338,57 @@
       }
     }
 
+    let speechRecognitionInstance = null;
+    function toggleSpeechRecognition(targetFieldId) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const icon = document.getElementById('micIcon_' + targetFieldId);
+
+      if (!SpeechRecognition) {
+        showToast('Peramban Anda belum mendukung Web Speech API.', 'error');
+        return;
+      }
+
+      if (speechRecognitionInstance) {
+        speechRecognitionInstance.stop();
+        speechRecognitionInstance = null;
+        if (icon) icon.style.color = '';
+        showToast('Perekaman suara berhenti.', 'info');
+        return;
+      }
+
+      speechRecognitionInstance = new SpeechRecognition();
+      speechRecognitionInstance.lang = 'id-ID';
+      speechRecognitionInstance.continuous = false;
+      speechRecognitionInstance.interimResults = false;
+
+      if (icon) icon.style.color = '#ef4444';
+      showToast('Mendengarkan suara dokter (bicara sekarang)...', 'info');
+
+      speechRecognitionInstance.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        const target = document.getElementById(targetFieldId);
+        if (target) {
+          target.value = (target.value ? (target.value + ' ') : '') + transcript;
+        }
+        showToast('Suara berhasil dicatat!', 'success');
+      };
+
+      speechRecognitionInstance.onerror = function() {
+        if (icon) icon.style.color = '';
+        speechRecognitionInstance = null;
+      };
+
+      speechRecognitionInstance.onend = function() {
+        if (icon) icon.style.color = '';
+        speechRecognitionInstance = null;
+      };
+
+      speechRecognitionInstance.start();
+    }
+
     let lastAiDiagnosisText = '';
     let lastAiPlanText = '';
 
-    /**
-     * Groq AI Agent Integration
-     * Memanfaatkan Groq LPU Inference API sesuai spesifikasi resmi:
-     * Endpoint: https://api.groq.com/openai/v1/chat/completions
-     */
     function callGroqAiAgent() {
       const s = document.getElementById('cpptSubjektif').value.trim();
       const o = document.getElementById('cpptObjektif').value.trim();
@@ -2427,7 +2403,6 @@
       const chatContainer = document.getElementById('groqChatContainer');
       box.style.display = 'block';
 
-      // Ringkas data odontogram yang terdeteksi
       const odontoSummary = Object.keys(odontogramState).map(k => 'Gigi ' + k + ' (' + odontogramState[k].replace('status-', '') + ')').join(', ') || 'Belum ada temuan odontogram';
       const patientInfo = activeDoctorPatient ? (activeDoctorPatient.namaPasien + ', Gender: ' + activeDoctorPatient.gender + ', Alergi: ' + activeDoctorPatient.alergi) : 'Pasien Umum';
 
@@ -2446,7 +2421,7 @@
       chatContainer.innerHTML = '<div class="groq-msg-bubble groq-msg-agent" id="groqPrimaryResult">' +
         '<div style="display:flex; align-items:center; gap:8px;">' +
           '<i class="fa-solid fa-bolt fa-spin" style="color:#ea580c;"></i>' +
-          '<span>Groq LPU AI Agent sedang menganalisis anamnesa & odontogram pasien...</span>' +
+          '<span>Groq LPU AI Agent (' + systemGroqModel + ') sedang menganalisis klinis...</span>' +
         '</div>' +
       '</div>';
 
@@ -2474,10 +2449,10 @@
 
         extractAiFields(responseText);
         chatContainer.innerHTML = '<div class="groq-msg-bubble groq-msg-agent">' +
-          '<div style="font-weight:800; color:#ea580c; margin-bottom:6px;"><i class="fa-solid fa-clipboard-check"></i> Rekomendasi Diagnosa & Terapi AI:</div>' +
+          '<div style="font-weight:800; color:#ea580c; margin-bottom:6px;"><i class="fa-solid fa-clipboard-check"></i> Rekomendasi Diagnosa & Terapi (' + systemGroqModel + '):</div>' +
           '<div style="white-space:pre-wrap;">' + escapeHtml(responseText) + '</div>' +
         '</div>';
-        showToast('Analisis Groq AI LPU selesai (~0.4s)!', 'groq');
+        showToast('Analisis Groq LPU (' + systemGroqModel + ') selesai!', 'groq');
       });
     }
 
@@ -2512,13 +2487,7 @@
       });
     }
 
-    /**
-     * Eksekutor request Groq:
-     * 1. Mencoba panggil backend runApi('askGroq', ...)
-     * 2. Jika offline/direct, panggil direct endpoint Groq https://api.groq.com/openai/v1/chat/completions
-     */
     function executeGroqRequest(messages, callback) {
-      // Opsi 1: Panggil backend GAS router
       runApi('askGroq', { messages: messages, model: systemGroqModel })
         .then(function(res) {
           if (res && res.status === 'success' && res.text) {
@@ -2532,7 +2501,6 @@
           }
         })
         .catch(function(err) {
-          // Opsi 2: Fallback ke direct Groq API jika key tersedia di browser state
           if (systemGroqKey) {
             callDirectGroqApi(systemGroqKey, messages, callback);
           } else {
@@ -2549,7 +2517,7 @@
           'Authorization': 'Bearer ' + apiKey
         },
         body: JSON.stringify({
-          model: systemGroqModel || 'llama-3.3-70b-versatile',
+          model: systemGroqModel || 'openai/gpt-oss-120b',
           messages: messages,
           temperature: 0.2,
           max_tokens: 1024
@@ -2562,7 +2530,7 @@
         } else if (data && data.error) {
           callback(data.error.message || 'Groq Error');
         } else {
-          callback('Struktur data Groq tidak dikenali.');
+          callback('Struktur respons Groq tidak dikenali.');
         }
       })
       .catch(function(e) {
@@ -3285,8 +3253,8 @@
                 systemGroqKey = res.settings.GROQ_API_KEY;
               }
               if (res.settings.GROQ_MODEL) {
-                document.getElementById('adminGroqModelSelect').value = res.settings.GROQ_MODEL;
                 systemGroqModel = res.settings.GROQ_MODEL;
+                syncModelSelectors(systemGroqModel);
               }
               if (res.settings.GEMINI_API_KEY) {
                 document.getElementById('adminGeminiKeyInput').value = res.settings.GEMINI_API_KEY;
@@ -3343,7 +3311,7 @@
         return;
       }
 
-      showToast('Menguji koneksi ke Groq LPU API...', 'groq');
+      showToast('Menguji koneksi model ' + m + ' ke Groq API...', 'groq');
 
       fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
@@ -3352,7 +3320,7 @@
           'Authorization': 'Bearer ' + k
         },
         body: JSON.stringify({
-          model: m || 'llama-3.3-70b-versatile',
+          model: m || 'openai/gpt-oss-120b',
           messages: [{ role: 'user', content: 'Ping test. Jawab: OK Aktif' }],
           max_tokens: 15
         })
@@ -3360,9 +3328,10 @@
       .then(function(res) { return res.json(); })
       .then(function(data) {
         if (data && data.choices && data.choices[0]) {
-          showToast('Koneksi Groq API Berhasil! Respon: ' + data.choices[0].message.content, 'success');
+          showToast('Koneksi Groq Berhasil (' + m + ')! Respon: ' + data.choices[0].message.content, 'success');
           systemGroqKey = k;
           systemGroqModel = m;
+          syncModelSelectors(m);
         } else if (data && data.error) {
           showToast('Groq Error: ' + data.error.message, 'error');
         } else {
@@ -3380,20 +3349,19 @@
 
       systemGroqKey = k;
       systemGroqModel = m;
+      syncModelSelectors(m);
 
       runApi('updateSystemSettings', {
         adminUserId: currentUser ? currentUser.userId : 'ADMIN',
         configKey: 'GROQ_API_KEY',
         configValue: k
-      }).then(function(res) {
+      }).then(function() {
         runApi('updateSystemSettings', {
           adminUserId: currentUser ? currentUser.userId : 'ADMIN',
           configKey: 'GROQ_MODEL',
           configValue: m
         }).then(function() {
-          showToast('Konfigurasi GROQ_API_KEY & MODEL berhasil disimpan!', 'success');
-          const badge = document.getElementById('groqModelBadge');
-          if (badge) badge.innerText = m;
+          showToast('Model ' + m + ' & GROQ_API_KEY berhasil disimpan!', 'success');
         });
       });
     }
