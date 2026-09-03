@@ -1,0 +1,20 @@
+{
+  "name": "akshara-dental-space-webapp",
+  "version": "4.0.0",
+  "description": "Enterprise-Grade Google Apps Script & Standalone Vercel Healthcare System for Klinik Akshara Dental Space",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "google-apps-script",
+    "healthcare-erp",
+    "dental-clinic",
+    "odontogram",
+    "gemini-ai",
+    "pos-cashier"
+  ],
+  "author": "Klinik Akshara Dental Space",
+  "license": "MIT"
+}

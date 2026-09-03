@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klinik Akshara Dental Space — Enterprise Medical & Dental System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* RESET & DASAR */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* SISTEM DUAL THEME DENGAN GLASSMORPHISM */
+    body.theme-white {
+      --bg-base: #f8fafc;
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-card: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(226, 232, 240, 0.85);
+      --glass-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --accent: #0ea5e9;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+
+    body.theme-blue {
+      --bg-base: #f0f9ff;
+      --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+      --glass-bg: rgba(240, 249, 255, 0.85);
+      --glass-card: rgba(224, 242, 254, 0.70);
+      --glass-border: rgba(186, 230, 253, 0.8);
+      --glass-shadow: 0 12px 35px rgba(2, 132, 199, 0.12);
+      --text-main: #082f49;
+      --text-muted: #475569;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --accent: #06b6d4;
+      --badge-bg: #bae6fd;
+      --badge-text: #0284c7;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+    }
+
+    .glass-card {
+      background: var(--glass-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: var(--glass-shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      box-shadow: 0 15px 35px rgba(2, 132, 199, 0.15);
+    }
+
+    /* HEADER & NAV */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
+      color: #fff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+    .nav-item a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 14px;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .nav-item a:hover {
+      background: var(--badge-bg);
+      color: var(--primary);
+    }
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--badge-bg);
+    }
+
+    /* HERO SLIDER */
+    .hero-section {
+      position: relative;
+      padding: 30px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--glass-shadow);
+    }
+    .slide-item {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+    }
+    .slide-item.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slide-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.45) 60%, rgba(15, 23, 42, 0.1) 100%);
+      z-index: 1;
+    }
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      color: #ffffff;
+    }
+    .slide-content h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .slide-content p {
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+    .slider-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .slider-dot.active {
+      width: 32px;
+      border-radius: 8px;
+      background: #38bdf8;
+    }
+
+    /* SECTIONS */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      padding: 30px;
+      text-align: left;
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--badge-bg);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* RESERVASI FORM */
+    .reservasi-card {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px;
+    }
+    .form-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 14px;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full {
+      grid-column: span 2;
+    }
+    label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    input, select, textarea {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.85);
+      color: #0f172a;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+    }
+
+    /* FLOATING WHATSAPP */
+    .wa-float-container {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .wa-chat-box {
+      width: 320px;
+      padding: 18px;
+      display: none;
+    }
+    .wa-chat-box.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    .wa-float-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s;
+    }
+    .wa-float-btn:hover {
+      transform: scale(1.08);
+    }
+
+    /* ODONTOGRAM INTERAKTIF */
+    .odontogram-wrapper {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--glass-border);
+      margin: 15px 0;
+    }
+    .teeth-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .tooth-box {
+      width: 38px;
+      height: 48px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      background: #f8fafc;
+    }
+    .tooth-box:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .tooth-box.status-karies { background: #fecaca; border-color: #ef4444; color: #991b1b; }
+    .tooth-box.status-tambalan { background: #fed7aa; border-color: #f97316; color: #9a3412; }
+    .tooth-box.status-mahkota { background: #fef08a; border-color: #eab308; color: #854d0e; }
+    .tooth-box.status-endo { background: #e9d5ff; border-color: #a855f7; color: #6b21a8; }
+    .tooth-box.status-hilang { background: #cbd5e1; border-color: #64748b; color: #334155; text-decoration: line-through; }
+
+    /* TV MONITOR DISPLAY */
+    .tv-mode-active {
+      background: #020617 !important;
+      color: #ffffff !important;
+    }
+    .tv-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 100%);
+    }
+    .tv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #1e293b;
+      padding-bottom: 20px;
+    }
+    .tv-main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+      flex: 1;
+    }
+    .tv-call-box {
+      background: rgba(30, 41, 59, 0.6);
+      border: 2px solid #38bdf8;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-shadow: 0 0 50px rgba(56, 189, 248, 0.2);
+    }
+    .tv-queue-number {
+      font-size: 6rem;
+      font-weight: 900;
+      color: #38bdf8;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+      margin: 15px 0;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.show {
+      display: flex;
+    }
+    .modal-box {
+      width: 100%;
+      max-width: 550px;
+      padding: 32px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none; border: none; font-size: 1.3rem;
+      cursor: pointer; color: var(--text-muted);
+    }
+
+    /* TOAST */
+    .toast-box {
+      position: fixed;
+      top: 20px; right: 20px;
+      z-index: 9999;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #fff;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: slideDown 0.3s ease;
+    }
+    .toast-box.success { background: #059669; }
+    .toast-box.error { background: #dc2626; }
+    .toast-box.info { background: #0284c7; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .nav-links { display: none; }
+      .tv-main-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="theme-white">
+
+  <!-- TOAST NOTIFIKASI -->
+  <div id="toastBox" class="toast-box"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="#" class="brand-logo" onclick="switchView('landing')">
+      <div class="brand-icon"><i class="fa-solid fa-tooth"></i></div>
+      <div>
+        <div>Akshara Dental Space</div>
+        <div style="font-size:0.7rem; font-weight:500; color:var(--text-muted); text-transform:uppercase;">Klinik Spesialis Terpadu</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item"><a href="#beranda" onclick="switchView('landing')">Beranda</a></li>
+      <li class="nav-item"><a href="#layanan" onclick="switchView('landing')">Layanan</a></li>
+      <li class="nav-item"><a href="#dokter" onclick="switchView('landing')">Dokter & Jadwal</a></li>
+      <li class="nav-item"><a href="#kontak" onclick="switchView('landing')">Kontak</a></li>
+      <li class="nav-item"><a href="#reservasi" onclick="switchView('landing')">Reservasi</a></li>
+    </ul>
+
+    <div style="display:flex; align-items:center; gap:10px;">
+      <!-- THEME SWITCHER BUTTON -->
+      <button class="nav-btn btn-outline" id="themeToggleBtn" onclick="toggleTheme()" title="Ubah Tema Warna">
+        <i class="fa-solid fa-circle-half-stroke"></i> <span id="themeLabel">Tema</span>
+      </button>
+
+      <!-- TV MONITOR BUTTON -->
+      <button class="nav-btn btn-outline" onclick="openTvQueue()" title="Buka TV Ruang Antrean">
+        <i class="fa-solid fa-tv"></i> TV Antrean
+      </button>
+
+      <!-- PORTAL LOGIN STAF -->
+      <button class="nav-btn btn-primary" onclick="openLoginModal()">
+        <i class="fa-solid fa-user-shield"></i> Portal Staf
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main id="appRoot">
+
+    <!-- ==================== VIEW 1: LANDING PAGE PUBLIK ==================== -->
+    <div id="landingView">
+      
+      <!-- HERO SLIDER -->
+      <section class="hero-section" id="beranda">
+        <div class="slider-container">
+          <!-- Slide 1 -->
+          <div class="slide-item active" style="background-image:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <span style="background:rgba(56,189,248,0.2); border:1px solid #38bdf8; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700;">DIGITAL HEALTHCARE 4.0</span>
+              <h1 style="margin-top:12px;">Presisi Estetika Gigi & Kesehatan Multi-Spesialis</h1>
+              <p>Perawatan gigi modern berbasis kecerdasan buatan, teknologi radiologi dental 3D, dan sinergi tenaga medis spesialis terkemuka di Makassar.</p>
+              <div style="display:flex; gap:12px;">
+                <a href="#reservasi" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-calendar-check"></i> Reservasi Sekarang</a>
+                <button class="nav-btn btn-outline" style="color:#fff; border-color:#fff;" onclick="openPwaModal()"><i class="fa-solid fa-mobile-screen"></i> Unduh App PWA</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide-item" style="background-image:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <span style="background:rgba(56,189,248,0.2); border:1px solid #38bdf8; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700;">ODONTOGRAM DIGITAL</span>
+              <h1 style="margin-top:12px;">Peta Rekam Medis Gigi 52 Elemen Terintegrasi</h1>
+              <p>Riwayat kondisi karies, restorasi tambalan, hingga perawatan saluran akar tercatat digital dan terpantau akurat secara berkesinambungan.</p>
+              <a href="#dokter" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-user-doctor"></i> Lihat Jadwal Dokter</a>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="slide-item" style="background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <span style="background:rgba(56,189,248,0.2); border:1px solid #38bdf8; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:700;">AI MEDICAL ASSISTANT</span>
+              <h1 style="margin-top:12px;">Diferensial Diagnosa Berbasis Gemini AI</h1>
+              <p>Mendukung dokter dengan analisis rekam medis mendalam, peringatan otomatis alergi obat, dan resume medis terverifikasi QR Code.</p>
+              <a href="#reservasi" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-hospital-user"></i> Cek Nomor Antrean</a>
+            </div>
+          </div>
+
+          <div class="slider-dots">
+            <div class="slider-dot active" onclick="jumpSlide(0)"></div>
+            <div class="slider-dot" onclick="jumpSlide(1)"></div>
+            <div class="slider-dot" onclick="jumpSlide(2)"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYANAN MEDIS -->
+      <section class="container" id="layanan">
+        <div class="section-title">
+          <h2>Layanan Unggulan Terpadu</h2>
+          <p>Kombinasi komprehensif dokter gigi umum, spesialis gigi, dokter umum, dan poliklinik spesialis</p>
+        </div>
+        <div class="services-grid">
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Konservasi & Endodontik</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.5;">Perawatan saluran akar tanpa rasa sakit, penambalan komposit estetik, dan peremajaan jaringan pulpa gigi.</p>
+          </div>
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fa-solid fa-teeth-open"></i></div>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Ortodonsia & Bedah Mulut</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.5;">Pemasangan behel estetik, aligner transparan, pencabutan gigi bungsu impaksi, serta bedah maksilofasial.</p>
+          </div>
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Poli Spesialis Medis</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.5;">Layanan lengkap Dokter Spesialis Penyakit Dalam, Anak, Jantung, Kulit, Mata, Saraf, Bedah, dan Jiwa.</p>
+          </div>
+          <div class="glass-card service-card">
+            <div class="service-icon"><i class="fa-solid fa-flask-vial"></i></div>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">Laboratorium & Farmasi</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.5;">Uji diagnostik darah lengkap, apotek terintegrasi e-resep, dan sistem peringatan dini alergi obat pasien.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DAFTAR DOKTER -->
+      <section class="container" id="dokter">
+        <div class="section-title">
+          <h2>Profil Tenaga Medis Profesional</h2>
+          <p>Daftar dokter spesialis dan dokter gigi yang berpraktek di Klinik Akshara Dental Space</p>
+        </div>
+        <div id="doctorListContainer" class="services-grid">
+          <!-- Diisi via JS -->
+        </div>
+      </section>
+
+      <!-- RESERVASI ONLINE MANDIRI -->
+      <section class="container" id="reservasi">
+        <div class="section-title">
+          <h2>Reservasi Mandiri Pasien</h2>
+          <p>Dapatkan nomor antrean dan slot waktu periksa tanpa perlu mengantre lama di ruang tunggu</p>
+        </div>
+        <div class="glass-card reservasi-card">
+          <div class="form-tabs">
+            <button class="tab-btn active" id="tabPasienBaruBtn" onclick="switchReservasiTab('baru')"><i class="fa-solid fa-user-plus"></i> Pasien Baru</button>
+            <button class="tab-btn" id="tabPasienLamaBtn" onclick="switchReservasiTab('lama')"><i class="fa-solid fa-id-card"></i> Pasien Lama (Cari RM/NIK)</button>
+          </div>
+
+          <!-- Form Pasien Lama Search -->
+          <div id="boxPasienLama" style="display:none; margin-bottom:24px; padding:18px; border-radius:14px; background:var(--badge-bg);">
+            <div style="display:flex; gap:12px;">
+              <input type="text" id="searchRmNikInput" placeholder="Masukkan Nomor RM (contoh: RM-0001) atau NIK..." style="flex:1;" />
+              <button class="nav-btn btn-primary" onclick="doSearchPatient()"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+            </div>
+            <div id="searchResultFeedback" style="margin-top:10px; font-size:0.85rem; font-weight:600;"></div>
+          </div>
+
+          <!-- Form Data Reservasi -->
+          <form id="formReservasi" onsubmit="handleReservasiSubmit(event)">
+            <input type="hidden" id="resNomorRm" value="" />
+            <input type="hidden" id="resIsNew" value="true" />
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Nomor Induk Kependudukan (NIK) *</label>
+                <input type="number" id="resNik" required placeholder="16 Digit NIK KTP..." />
+              </div>
+              <div class="form-group">
+                <label>Nama Lengkap Pasien *</label>
+                <input type="text" id="resNama" required placeholder="Sesuai KTP / KK..." />
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir *</label>
+                <input type="date" id="resTglLahir" required />
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin *</label>
+                <select id="resGender" required>
+                  <option value="Laki-Laki">Laki-Laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nomor WhatsApp Aktif *</label>
+                <input type="tel" id="resNoHp" required placeholder="08xxxxxxxxxx" />
+              </div>
+              <div class="form-group">
+                <label>Pilih Dokter & Poliklinik *</label>
+                <select id="resDokterSelect" required onchange="handleDokterChange()">
+                  <!-- Diisi via JS -->
+                </select>
+              </div>
+              <div class="form-group full">
+                <label>Alamat Domisili Lengkap *</label>
+                <input type="text" id="resAlamat" required placeholder="Nama jalan, nomor rumah, kelurahan, kota..." />
+              </div>
+              <div class="form-group full">
+                <label>Riwayat Alergi Obat (Sangat Penting demi Keamanan Anda) *</label>
+                <input type="text" id="resAlergi" required placeholder="Tuliskan nama obat (misal: Amoxicillin, Aspirin) atau tulis 'Tidak Ada'..." />
+              </div>
+              <div class="form-group full">
+                <label>Keluhan Utama / Gejala yang Dirasakan *</label>
+                <textarea id="resKeluhan" rows="3" required placeholder="Jelaskan kondisi rasa sakit, bengkak, atau kebutuhan estetika gigi Anda..."></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top:24px; text-align:right;">
+              <button type="submit" class="nav-btn btn-primary" style="padding:14px 28px; font-size:1rem;" id="btnSubmitReservasi">
+                <i class="fa-solid fa-paper-plane"></i> Konfirmasi Pendaftaran Antrean
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- KONTAK & MAPS -->
+      <section class="container" id="kontak">
+        <div class="section-title">
+          <h2>Lokasi & Informasi Operasional</h2>
+          <p>Kunjungi klinik kami di pusat kota dengan fasilitas parkir luas dan akses ramah disabilitas</p>
+        </div>
+        <div class="form-grid">
+          <div class="glass-card" style="padding:30px;">
+            <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:15px; color:var(--primary);"><i class="fa-solid fa-location-dot"></i> Akshara Dental Space</h3>
+            <p style="color:var(--text-muted); line-height:1.6; margin-bottom:15px;">
+              Jl. Boulevard Medika No. 88, Makassar, Sulawesi Selatan.<br>
+              <strong>Jam Praktek:</strong> Setiap Hari, 08:00 – 21:00 WITA<br>
+              <strong>Hotline WhatsApp:</strong> +62 853-3892-2586<br>
+              <strong>Email:</strong> care@aksharadental.space
+            </p>
+            <div style="display:flex; gap:12px; margin-top:20px;">
+              <a href="https://instagram.com" target="_blank" class="nav-btn btn-outline"><i class="fa-brands fa-instagram"></i> Instagram</a>
+              <a href="mailto:care@aksharadental.space" class="nav-btn btn-outline"><i class="fa-solid fa-envelope"></i> Email</a>
+            </div>
+          </div>
+          <div class="glass-card" style="padding:10px; overflow:hidden; min-height:280px;">
+            <iframe src="https://maps.google.com/maps?q=Makassar%20Sulawesi%20Selatan&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0; border-radius:14px; min-height:260px;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER PROFESIONAL -->
+      <footer style="margin-top:60px; border-top:1px solid var(--glass-border); padding:40px 24px; background:var(--glass-card);">
+        <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; padding:0;">
+          <div>
+            <div style="font-weight:800; font-size:1.1rem; color:var(--primary);">Klinik Akshara Dental Space</div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">Terakreditasi Paripurna Kemenkes RI — No. Akreditasi: YM.02.01/VI/2024</p>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">Layanan Gawat Darurat Gigi & Medis: <strong>+62 853-3892-2586</strong></p>
+          </div>
+          <div style="font-size:0.85rem; color:var(--text-muted); text-align:right;">
+            <div>&copy; 2026 Klinik Akshara Dental Space. All Rights Reserved.</div>
+            <div style="margin-top:4px;">Designed with Enterprise-Grade Google Apps Script & Dual-Runtime Bridge</div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- ==================== VIEW 2: TV MONITOR ANTREAN ==================== -->
+    <div id="tvView" style="display:none;" class="tv-mode-active">
+      <div class="tv-container">
+        <div class="tv-header">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <div class="brand-icon"><i class="fa-solid fa-tooth"></i></div>
+            <div>
+              <h1 style="font-size:1.8rem; font-weight:800;">MONITOR RUANG ANTREAN TERPADU</h1>
+              <p style="color:#94a3b8; font-size:1rem;">Klinik Akshara Dental Space — Pemanggilan Suara Otomatis</p>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:15px;">
+            <select id="tvFilterPoli" onchange="fetchTvQueueData()" style="background:#1e293b; color:#fff; border-color:#334155;">
+              <option value="SEMUA">Semua Poliklinik</option>
+              <option value="Poli Umum">Poli Umum</option>
+              <option value="Poli Gigi">Poli Gigi & Spesialis</option>
+              <option value="Poli Spesialis">Poli Spesialis Medis</option>
+            </select>
+            <button class="nav-btn btn-outline" onclick="closeTvQueue()" style="color:#fff; border-color:#475569;">
+              <i class="fa-solid fa-xmark"></i> Tutup TV Mode
+            </button>
+          </div>
+        </div>
+
+        <div class="tv-main-grid">
+          <!-- Antrean Sedang Dipanggil -->
+          <div class="tv-call-box">
+            <span style="font-size:1.2rem; font-weight:700; color:#cbd5e1; text-transform:uppercase; letter-spacing:2px;">NOMOR ANTREAN SEDANG DIPANGGIL</span>
+            <div id="tvCurrentQueue" class="tv-queue-number">---</div>
+            <div id="tvCurrentRoom" style="font-size:2.2rem; font-weight:800; color:#ffffff; margin-bottom:8px;">Menunggu Pasien...</div>
+            <div id="tvCurrentDoctor" style="font-size:1.2rem; color:#94a3b8;">Silakan persiapkan kartu identitas Anda</div>
+          </div>
+
+          <!-- 5 Antrean Berikutnya -->
+          <div style="background:rgba(30,41,59,0.4); border:1px solid #334155; border-radius:24px; padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; color:#38bdf8; margin-bottom:18px; border-bottom:1px solid #334155; padding-bottom:10px;">
+              <i class="fa-solid fa-list-ol"></i> 5 Antrean Berikutnya
+            </h3>
+            <div id="tvNextList" style="display:flex; flex-direction:column; gap:12px;">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== VIEW 3: STAFF PORTAL DASHBOARD ==================== -->
+    <div id="portalView" style="display:none;" class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; border-bottom:1px solid var(--glass-border); padding-bottom:16px;">
+        <div>
+          <h2 id="portalGreeting" style="font-size:1.6rem; font-weight:800;">Dashboard Portal Staf</h2>
+          <p id="portalRoleBadge" style="color:var(--primary); font-weight:700; font-size:0.9rem;"></p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="nav-btn btn-outline" onclick="refreshStaffView()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+          <button class="nav-btn btn-outline" style="color:#ef4444; border-color:#ef4444;" onclick="logoutUser()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+        </div>
+      </div>
+
+      <!-- PORTAL TABS -->
+      <div id="portalNavTabs" style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+        <!-- Diisi secara dinamis sesuai Role -->
+      </div>
+
+      <!-- KONTEN PORTAL DOKTER: CPPT & ODONTOGRAM -->
+      <div id="staffSectionDokter" style="display:none;">
+        <div class="form-grid">
+          <!-- Kolom Kiri: Antrean Hari Ini -->
+          <div class="glass-card" style="padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:14px;"><i class="fa-solid fa-users"></i> Antrean Pasien Hari Ini</h3>
+            <div id="doctorQueueList" style="display:flex; flex-direction:column; gap:10px; max-height:550px; overflow-y:auto;">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Form SOAP, Odontogram & Gemini AI -->
+          <div class="glass-card" style="padding:24px;" id="doctorWorkArea">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:14px;"><i class="fa-solid fa-stethoscope"></i> Rekam Medis & CPPT (SOAP)</h3>
+            <div id="selectedPatientBadge" style="padding:12px; border-radius:10px; background:var(--badge-bg); font-size:0.9rem; font-weight:700; margin-bottom:16px;">
+              Pilih salah satu pasien di kolom kiri untuk memulai pemeriksaan.
+            </div>
+
+            <div id="patientAllergyAlert" style="display:none; padding:12px; border-radius:10px; background:#fee2e2; border:1px solid #ef4444; color:#991b1b; font-weight:700; margin-bottom:14px;">
+              <i class="fa-solid fa-triangle-exclamation"></i> PERINGATAN ALERGI PASIEN: <span id="alertAlergiText"></span>
+            </div>
+
+            <!-- ODONTOGRAM INTERAKTIF (KHUSUS POLI GIGI) -->
+            <div id="odontogramModule" style="display:none;" class="odontogram-wrapper">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="font-weight:700; font-size:0.9rem;"><i class="fa-solid fa-tooth"></i> Odontogram Interaktif (52 Elemen Gigi)</span>
+                <select id="odontogramStatusTool" style="font-size:0.8rem; padding:4px 8px;">
+                  <option value="status-karies">Karies (Merah)</option>
+                  <option value="status-tambalan">Tambalan (Oranye)</option>
+                  <option value="status-mahkota">Mahkota / Crown (Kuning)</option>
+                  <option value="status-endo">Perawatan Endo (Ungu)</option>
+                  <option value="status-hilang">Hilang / Cabut (Abu-abu)</option>
+                  <option value="status-normal">Normal (Bersih)</option>
+                </select>
+              </div>
+              <!-- Gigi Dewasa Atas (18-11, 21-28) -->
+              <div style="font-size:0.75rem; font-weight:700; text-align:center; color:var(--text-muted);">Gigi Dewasa Atas</div>
+              <div class="teeth-row" id="teethAdultUpper"></div>
+              <!-- Gigi Anak Atas (55-51, 61-65) -->
+              <div class="teeth-row" id="teethChildUpper"></div>
+              <!-- Gigi Anak Bawah (85-81, 71-75) -->
+              <div class="teeth-row" id="teethChildLower"></div>
+              <!-- Gigi Dewasa Bawah (48-41, 31-38) -->
+              <div style="font-size:0.75rem; font-weight:700; text-align:center; color:var(--text-muted);">Gigi Dewasa Bawah</div>
+              <div class="teeth-row" id="teethAdultLower"></div>
+            </div>
+
+            <!-- Triage & Vital Signs -->
+            <div class="form-grid" style="margin-bottom:14px;">
+              <div class="form-group">
+                <label>Status Triage</label>
+                <select id="cpptTriage">
+                  <option value="Hijau">Hijau (Non-Gawat Darurat)</option>
+                  <option value="Kuning">Kuning (Mendesak / Urgent)</option>
+                  <option value="Merah">Merah (Gawat Darurat)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Tanda Vital (Tensi / Nadi / Suhu)</label>
+                <input type="text" id="cpptVital" placeholder="Contoh: 120/80 mmHg, 78 bpm, 36.5 C" />
+              </div>
+            </div>
+
+            <!-- SOAP -->
+            <div class="form-group" style="margin-bottom:10px;">
+              <label>Subjektif (Anamnesa / Keluhan Pasien)</label>
+              <textarea id="cpptSubjektif" rows="2" placeholder="Pasien mengeluhkan..."></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label>Objektif (Pemeriksaan Fisik & Intraoral)</label>
+              <textarea id="cpptObjektif" rows="2" placeholder="Kondisi klinis yang ditemukan..."></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label>Asesmen / Diagnosa Klinis (ICD-10)</label>
+                <!-- ASISTEN GEMINI AI BUTTON -->
+                <button type="button" class="nav-btn btn-outline" style="padding:4px 10px; font-size:0.75rem;" onclick="callGeminiAiAssist()">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Analisa Asisten Gemini AI
+                </button>
+              </div>
+              <textarea id="cpptAsesmen" rows="2" placeholder="Diagnosa dokter..."></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Plan / Terapi Tindakan Medis</label>
+              <textarea id="cpptPlan" rows="2" placeholder="Rencana tindakan, resep obat, atau kontrol ulang..."></textarea>
+            </div>
+
+            <!-- AI RESULT BANNER -->
+            <div id="aiRecommendationBox" style="display:none; padding:14px; border-radius:12px; background:rgba(2,132,199,0.08); border:1px solid var(--accent); margin-bottom:16px;">
+              <div style="font-weight:700; font-size:0.85rem; color:var(--primary); margin-bottom:6px;"><i class="fa-solid fa-robot"></i> Rekomendasi Gemini AI Medical:</div>
+              <div id="aiRecommendationText" style="font-size:0.85rem; line-height:1.5; white-space:pre-wrap;"></div>
+            </div>
+
+            <!-- Tombol Simpan & Generator Dokumen -->
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+              <button class="nav-btn btn-outline" onclick="openDocGeneratorModal()"><i class="fa-solid fa-file-pdf"></i> Buat Surat Sakit/Sehat</button>
+              <button class="nav-btn btn-primary" onclick="submitCppt()"><i class="fa-solid fa-floppy-disk"></i> Simpan CPPT & Selesaikan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONTEN PORTAL POS KASIR -->
+      <div id="staffSectionKasir" style="display:none;">
+        <div class="form-grid">
+          <!-- Sesi Shift Kasir -->
+          <div class="glass-card" style="padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:12px;"><i class="fa-solid fa-cash-register"></i> Status Shift Kasir</h3>
+            <div id="posShiftStatusBox" style="padding:14px; border-radius:12px; background:var(--badge-bg); margin-bottom:18px;">
+              Memeriksa status shift kasir...
+            </div>
+            <div id="posShiftActionArea">
+              <!-- Form Buka Shift / Tutup Shift -->
+            </div>
+          </div>
+
+          <!-- Billing & Kasir POS -->
+          <div class="glass-card" style="padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:12px;"><i class="fa-solid fa-receipt"></i> Transaksi Kasir Medis</h3>
+            <div style="display:flex; gap:10px; margin-bottom:15px;">
+              <input type="text" id="posBillingSearch" placeholder="Ketik Kode Antrean / No RM..." style="flex:1;" />
+              <button class="nav-btn btn-primary" onclick="loadBillingDetails()"><i class="fa-solid fa-magnifying-glass"></i> Cari Tagihan</button>
+            </div>
+
+            <!-- Rincian Billing -->
+            <div id="billingSummaryArea" style="display:none;">
+              <div id="billingPatientInfo" style="font-weight:700; margin-bottom:10px;"></div>
+              <table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-bottom:15px;">
+                <thead>
+                  <tr style="border-bottom:1.5px solid var(--glass-border); text-align:left;">
+                    <th style="padding:6px;">Item Tagihan</th>
+                    <th style="padding:6px; text-align:center;">Qty</th>
+                    <th style="padding:6px; text-align:right;">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody id="billingTableBody"></tbody>
+              </table>
+
+              <!-- Pembayaran -->
+              <div class="form-grid" style="margin-bottom:15px;">
+                <div class="form-group">
+                  <label>Metode Pembayaran</label>
+                  <select id="posMetodeBayar" onchange="calculateChange()">
+                    <option value="Tunai">Tunai</option>
+                    <option value="QRIS">QRIS Statis/Dinamis</option>
+                    <option value="Debit">Kartu Debit / EDC</option>
+                    <option value="Transfer">Transfer Bank</option>
+                    <option value="Asuransi">Klaim Asuransi</option>
+                    <option value="Split">Split Pay (Asuransi + Tunai)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Nominal Bayar (Rp)</label>
+                  <input type="number" id="posNominalBayar" oninput="calculateChange()" placeholder="Jumlah uang..." />
+                </div>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; font-weight:800; font-size:1.1rem; margin-bottom:15px; border-top:1px solid var(--glass-border); padding-top:10px;">
+                <div>Kembalian:</div>
+                <div id="posKembalianText" style="color:#059669;">Rp 0</div>
+              </div>
+
+              <div style="display:flex; gap:10px; justify-content:flex-end;">
+                <button class="nav-btn btn-outline" onclick="printThermalReceipt()"><i class="fa-solid fa-print"></i> Cetak Struk 58mm</button>
+                <button class="nav-btn btn-primary" onclick="submitPosPayment()"><i class="fa-solid fa-check"></i> Proses Pembayaran Lunas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONTEN PORTAL SUPER ADMIN -->
+      <div id="staffSectionAdmin" style="display:none;">
+        <div class="form-grid">
+          <!-- Manajemen API Key Gemini -->
+          <div class="glass-card" style="padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:14px;"><i class="fa-solid fa-key"></i> Pengaturan Kunci API Gemini</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Masukkan kunci API Google Generative Language untuk mengaktifkan asisten medis AI.</p>
+            <div class="form-group" style="margin-bottom:12px;">
+              <label>GEMINI_API_KEY</label>
+              <div style="display:flex; gap:8px;">
+                <input type="password" id="adminGeminiKeyInput" placeholder="AIzaSy..." style="flex:1;" />
+                <button class="nav-btn btn-outline" type="button" onclick="togglePasswordEye('adminGeminiKeyInput')"><i class="fa-solid fa-eye"></i></button>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="nav-btn btn-outline" onclick="testGeminiConnection()"><i class="fa-solid fa-bolt"></i> Test Koneksi</button>
+              <button class="nav-btn btn-primary" onclick="saveGeminiSettings()"><i class="fa-solid fa-save"></i> Simpan ke SETTINGS</button>
+            </div>
+          </div>
+
+          <!-- Analitik & Waktu Tunggu -->
+          <div class="glass-card" style="padding:24px;">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:14px;"><i class="fa-solid fa-chart-line"></i> Analitik Operasional Hari Ini</h3>
+            <div class="form-grid" id="adminAnalyticsGrid">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Log Viewer -->
+        <div class="glass-card" style="padding:24px; margin-top:24px;">
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:14px;"><i class="fa-solid fa-book-medical"></i> Audit Trail Logbook Sistem</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+              <thead>
+                <tr style="border-bottom:1.5px solid var(--glass-border); text-align:left;">
+                  <th style="padding:8px;">Waktu</th>
+                  <th style="padding:8px;">User</th>
+                  <th style="padding:8px;">Aksi</th>
+                  <th style="padding:8px;">Modul</th>
+                  <th style="padding:8px;">Rincian</th>
+                </tr>
+              </thead>
+              <tbody id="adminAuditTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FLOATING WHATSAPP -->
+  <div class="wa-float-container">
+    <div class="glass-card wa-chat-box" id="waChatBox">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <span style="font-weight:700; font-size:0.9rem; color:#25d366;"><i class="fa-brands fa-whatsapp"></i> Chat Admin Klinik</span>
+        <button onclick="toggleWaBox()" style="background:none; border:none; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Halo! Ada yang bisa kami bantu seputar jadwal dokter atau reservasi?</p>
+      <input type="text" id="waQuickMsgInput" placeholder="Ketik pesan singkat..." style="width:100%; margin-bottom:10px;" />
+      <button class="nav-btn btn-primary" style="width:100%; background:#25d366; justify-content:center;" onclick="sendQuickWa()">
+        Kirim ke WhatsApp <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+    <button class="wa-float-btn" onclick="toggleWaBox()" title="Hubungi Kami via WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </button>
+  </div>
+
+  <!-- MODAL LOGIN STAF -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="glass-card modal-box">
+      <button class="modal-close" onclick="closeLoginModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <div class="brand-icon" style="margin:0 auto 12px;"><i class="fa-solid fa-lock"></i></div>
+        <h3 style="font-size:1.3rem; font-weight:800;">Gerbang Akses Staf Medis</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Masukkan username & password terotorisasi Anda</p>
+      </div>
+      <form onsubmit="handleLoginSubmit(event)">
+        <div class="form-group" style="margin-bottom:14px;">
+          <label>Username</label>
+          <input type="text" id="loginUsername" required placeholder="Contoh: admin, drg_akshara..." />
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="nav-btn btn-primary" style="width:100%; justify-content:center;" id="btnLoginSubmit">
+          <i class="fa-solid fa-right-to-bracket"></i> Masuk ke Portal
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DOKUMEN GENERATOR -->
+  <div class="modal-overlay" id="docModal">
+    <div class="glass-card modal-box">
+      <button class="modal-close" onclick="closeDocModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:15px;"><i class="fa-solid fa-file-signature"></i> Terbitkan Dokumen Medis Resmi</h3>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label>Jenis Dokumen Medis</label>
+        <select id="docTypeSelect">
+          <option value="Sakit">Surat Keterangan Sakit (SKS)</option>
+          <option value="Sehat">Surat Keterangan Sehat</option>
+          <option value="Resume">Resume Medis Rawat Jalan</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label>Diagnosa</label>
+        <input type="text" id="docDiagnosa" placeholder="K02.1 Karies Dentin..." />
+      </div>
+      <div class="form-group" style="margin-bottom:18px;">
+        <label>Keterangan / Anjuran Dokter</label>
+        <textarea id="docKeterangan" rows="2" placeholder="Diberikan istirahat selama 2 hari..."></textarea>
+      </div>
+      <button class="nav-btn btn-primary" style="width:100%; justify-content:center;" onclick="submitGenerateDoc()">
+        <i class="fa-solid fa-stamp"></i> Terbitkan PDF Resmi & Stempel QR
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL PWA INSTALLATION -->
+  <div class="modal-overlay" id="pwaModal">
+    <div class="glass-card modal-box" style="text-align:center;">
+      <button class="modal-close" onclick="closePwaModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="brand-icon" style="margin:0 auto 12px;"><i class="fa-solid fa-mobile-screen"></i></div>
+      <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:10px;">Instal Aplikasi Akshara Dental</h3>
+      <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5; margin-bottom:18px;">
+        Pasang aplikasi ini di layar utama ponsel Anda untuk akses cepat tanpa perlu membuka peramban web setiap saat.
+      </p>
+      <button class="nav-btn btn-primary" id="btnInstallPwa" onclick="triggerPwaInstall()" style="width:100%; justify-content:center; margin-bottom:10px;">
+        <i class="fa-solid fa-download"></i> Pasang ke Layar Utama (Android)
+      </button>
+      <div style="font-size:0.8rem; color:var(--text-muted); text-align:left; background:var(--badge-bg); padding:10px; border-radius:10px;">
+        <strong>Pengguna iOS (Safari):</strong> Tekan tombol <em>Bagikan (Share)</em> di bawah layar peramban, lalu pilih <em>"Tambahkan ke Layar Utama" (Add to Home Screen)</em>.
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC DUAL RUNTIME & FEATURES -->
+  <script>
+    /**
+     * ========================================================================
+     * 1. PROTEKSI DEVTOOLS & ANTI-TAMPER SECURITY
+     * ========================================================================
+     */
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || // Ctrl+Shift+I/J/C
+        (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    setInterval(function() {
+      // Pembersihan konsol berkala
+      console.clear();
+    }, 4000);
+
+    /**
+     * ========================================================================
+     * 2. KONFIGURASI GAS WEB APP & UNIVERSAL RUNTIME BRIDGE
+     * ========================================================================
+     */
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzZ8HVyql76ZZbVY7qk8HISf9h8d8xfs6zb4NlrjUZu_MkEYlZMLbjoS300_ap80h-e/exec";
+
+    function runApi(actionName, payloadData) {
+      return new Promise(function(resolve, reject) {
+        // Jika berjalan di dalam container Google Apps Script
+        if (typeof google !== 'undefined' && google.script && google.script.run) {
+          google.script.run
+            .withSuccessHandler(function(response) {
+              resolve(response);
+            })
+            .withFailureHandler(function(error) {
+              reject(error);
+            })
+            .handleActionRouter(actionName, payloadData || {});
+        } else {
+          // Jika berjalan di standalone host (Vercel / GitHub Pages)
+          fetch(GAS_API_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: actionName, payload: payloadData || {} })
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) { resolve(data); })
+          .catch(function(err) { reject(err); });
+        }
+      });
+    }
+
+    /**
+     * ========================================================================
+     * 3. STATE MANAJEMEN & INISIALISASI
+     * ========================================================================
+     */
+    let currentUser = null;
+    let clinicDoctors = [];
+    let currentSlide = 0;
+    let slideTimer = null;
+    let activeDoctorPatient = null;
+    let deferredPwaPrompt = null;
+    const odontogramState = {};
+
+    window.addEventListener('DOMContentLoaded', function() {
+      initTheme();
+      initHeroSlider();
+      initOdontogramGrid();
+      loadPublicData();
+      checkUrlParams();
+      initPwaService();
+    });
+
+    function showToast(msg, type) {
+      const box = document.getElementById('toastBox');
+      box.className = 'toast-box ' + (type || 'info');
+      box.innerText = msg;
+      box.style.display = 'block';
+      setTimeout(function() {
+        box.style.display = 'none';
+      }, 3500);
+    }
+
+    /**
+     * ========================================================================
+     * 4. THEME SWITCHER (WHITE HIGIENIS & BLUE CYAN SOFT)
+     * ========================================================================
+     */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('akshara_theme') || 'theme-white';
+      document.body.className = savedTheme;
+      updateThemeLabel(savedTheme);
+    }
+
+    function toggleTheme() {
+      const current = document.body.className;
+      const next = current === 'theme-white' ? 'theme-blue' : 'theme-white';
+      document.body.className = next;
+      localStorage.setItem('akshara_theme', next);
+      updateThemeLabel(next);
+      showToast('Tema diubah ke: ' + (next === 'theme-white' ? 'White Higienis' : 'Blue Cyan Soft'), 'info');
+    }
+
+    function updateThemeLabel(theme) {
+      const label = document.getElementById('themeLabel');
+      if (label) {
+        label.innerText = theme === 'theme-white' ? 'Tema Putih' : 'Tema Biru';
+      }
+    }
+
+    /**
+     * ========================================================================
+     * 5. HERO SLIDER INTERAKTIF
+     * ========================================================================
+     */
+    function initHeroSlider() {
+      slideTimer = setInterval(function() {
+        nextSlide();
+      }, 5000);
+    }
+
+    function nextSlide() {
+      jumpSlide((currentSlide + 1) % 3);
+    }
+
+    function jumpSlide(index) {
+      currentSlide = index;
+      const slides = document.querySelectorAll('.slide-item');
+      const dots = document.querySelectorAll('.slider-dot');
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+        if (dots[i]) dots[i].classList.remove('active');
+      }
+      if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    /**
+     * ========================================================================
+     * 6. PUBLIC DATA & RESERVASI MANDIRI
+     * ========================================================================
+     */
+    function loadPublicData() {
+      runApi('getInitialData', {})
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            clinicDoctors = res.dokters || [];
+            renderDoctorCards(clinicDoctors);
+            populateDoctorSelect(clinicDoctors);
+          }
+        })
+        .catch(function(err) {
+          console.error('Error loadPublicData:', err);
+        });
+    }
+
+    function renderDoctorCards(doctors) {
+      const container = document.getElementById('doctorListContainer');
+      if (!container) return;
+      let html = '';
+      for (let i = 0; i < doctors.length; i++) {
+        const d = doctors[i];
+        html += '<div class="glass-card service-card">' +
+          '<div style="font-size:0.75rem; font-weight:700; color:var(--primary); text-transform:uppercase; margin-bottom:6px;">' + d.kategori + '</div>' +
+          '<h3 style="font-size:1.15rem; font-weight:800; margin-bottom:4px;">' + d.nama + '</h3>' +
+          '<div style="color:var(--text-muted); font-size:0.85rem; margin-bottom:12px;">' + d.spesialisasi + '</div>' +
+          '<div style="font-size:0.85rem; color:var(--text-main); line-height:1.5;">' +
+            '<div><i class="fa-solid fa-calendar-day" style="color:var(--primary);"></i> ' + d.hari + '</div>' +
+            '<div><i class="fa-solid fa-clock" style="color:var(--primary);"></i> ' + d.jamMulai + ' - ' + d.jamSelesai + ' WITA</div>' +
+          '</div>' +
+          '<div style="margin-top:14px;">' +
+            '<a href="#reservasi" class="nav-btn btn-outline" style="width:100%; justify-content:center; text-decoration:none; font-size:0.8rem;" onclick="selectDoctorBooking(\'' + d.id + '\')">' +
+              '<i class="fa-solid fa-calendar-plus"></i> Buat Janji' +
+            '</a>' +
+          '</div>' +
+        '</div>';
+      }
+      container.innerHTML = html;
+    }
+
+    function populateDoctorSelect(doctors) {
+      const sel = document.getElementById('resDokterSelect');
+      if (!sel) return;
+      let html = '<option value="">-- Pilih Dokter & Spesialisasi --</option>';
+      for (let i = 0; i < doctors.length; i++) {
+        const d = doctors[i];
+        html += '<option value="' + d.id + '">' + d.nama + ' (' + d.spesialisasi + ')</option>';
+      }
+      sel.innerHTML = html;
+    }
+
+    function selectDoctorBooking(docId) {
+      const sel = document.getElementById('resDokterSelect');
+      if (sel) sel.value = docId;
+    }
+
+    function switchReservasiTab(tab) {
+      const btnBaru = document.getElementById('tabPasienBaruBtn');
+      const btnLama = document.getElementById('tabPasienLamaBtn');
+      const boxLama = document.getElementById('boxPasienLama');
+      const isNewInput = document.getElementById('resIsNew');
+
+      if (tab === 'baru') {
+        btnBaru.classList.add('active');
+        btnLama.classList.remove('active');
+        boxLama.style.display = 'none';
+        isNewInput.value = 'true';
+        document.getElementById('resNomorRm').value = '';
+      } else {
+        btnLama.classList.add('active');
+        btnBaru.classList.remove('active');
+        boxLama.style.display = 'block';
+        isNewInput.value = 'false';
+      }
+    }
+
+    function doSearchPatient() {
+      const q = document.getElementById('searchRmNikInput').value.trim();
+      const feedback = document.getElementById('searchResultFeedback');
+      if (!q) {
+        showToast('Ketik Nomor RM atau NIK untuk mencari!', 'error');
+        return;
+      }
+      feedback.innerText = 'Mencari data pasien...';
+
+      runApi('searchPatient', { query: q })
+        .then(function(res) {
+          if (res && res.found) {
+            const p = res.patient;
+            document.getElementById('resNomorRm').value = p.nomorRm;
+            document.getElementById('resNik').value = p.nik;
+            document.getElementById('resNama').value = p.nama;
+            document.getElementById('resTglLahir').value = p.tanggalLahir;
+            document.getElementById('resGender').value = p.jenisKelamin;
+            document.getElementById('resNoHp').value = p.noHp;
+            document.getElementById('resAlamat').value = p.alamat;
+            document.getElementById('resAlergi').value = p.alergiObat;
+            feedback.innerHTML = '<span style="color:#059669;"><i class="fa-solid fa-check"></i> Pasien Terdaftar: ' + p.nama + ' (' + p.nomorRm + ')</span>';
+            showToast('Data pasien berhasil dimuat!', 'success');
+          } else {
+            feedback.innerHTML = '<span style="color:#dc2626;"><i class="fa-solid fa-xmark"></i> Data tidak ditemukan. Silakan isi form Pasien Baru.</span>';
+          }
+        })
+        .catch(function(err) {
+          feedback.innerText = 'Error: ' + err.toString();
+        });
+    }
+
+    function handleReservasiSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmitReservasi');
+      btn.disabled = true;
+      btn.innerText = 'Mendaftarkan...';
+
+      const payload = {
+        isNewPatient: document.getElementById('resIsNew').value === 'true',
+        nomorRm: document.getElementById('resNomorRm').value,
+        nik: document.getElementById('resNik').value,
+        nama: document.getElementById('resNama').value,
+        tanggalLahir: document.getElementById('resTglLahir').value,
+        jenisKelamin: document.getElementById('resGender').value,
+        noHp: document.getElementById('resNoHp').value,
+        alamat: document.getElementById('resAlamat').value,
+        alergiObat: document.getElementById('resAlergi').value,
+        dokterId: document.getElementById('resDokterSelect').value,
+        ruanganPoli: 'Poli Gigi & Medis',
+        keluhanUtama: document.getElementById('resKeluhan').value
+      };
+
+      runApi('registerAppointment', payload)
+        .then(function(res) {
+          btn.disabled = false;
+          btn.innerText = 'Konfirmasi Pendaftaran Antrean';
+          if (res && res.status === 'success') {
+            showToast('Pendaftaran Berhasil! Kode Antrean: ' + res.kodeAntrean, 'success');
+            document.getElementById('formReservasi').reset();
+          } else {
+            showToast('Gagal mendaftar: ' + (res.message || 'Unknown error'), 'error');
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          btn.innerText = 'Konfirmasi Pendaftaran Antrean';
+          showToast('Error: ' + err.toString(), 'error');
+        });
+    }
+
+    /**
+     * ========================================================================
+     * 7. ODONTOGRAM 52 ELEMEN GIGI (32 DEWASA + 20 ANAK)
+     * ========================================================================
+     */
+    function initOdontogramGrid() {
+      const adultUpper = [18,17,16,15,14,13,12,11, 21,22,23,24,25,26,27,28];
+      const childUpper = [55,54,53,52,51, 61,62,63,64,65];
+      const childLower = [85,84,83,82,81, 71,72,73,74,75];
+      const adultLower = [48,47,46,45,44,43,42,41, 31,32,33,34,35,36,37,38];
+
+      renderToothRow('teethAdultUpper', adultUpper);
+      renderToothRow('teethChildUpper', childUpper);
+      renderToothRow('teethChildLower', childLower);
+      renderToothRow('teethAdultLower', adultLower);
+    }
+
+    function renderToothRow(elemId, teethArray) {
+      const container = document.getElementById(elemId);
+      if (!container) return;
+      let html = '';
+      for (let i = 0; i < teethArray.length; i++) {
+        const t = teethArray[i];
+        html += '<div class="tooth-box" id="tooth_' + t + '" onclick="toggleToothStatus(' + t + ')">' +
+          '<span>' + t + '</span>' +
+        '</div>';
+      }
+      container.innerHTML = html;
+    }
+
+    function toggleToothStatus(toothNum) {
+      const tool = document.getElementById('odontogramStatusTool').value;
+      const box = document.getElementById('tooth_' + toothNum);
+      if (!box) return;
+
+      box.className = 'tooth-box';
+      if (tool !== 'status-normal') {
+        box.classList.add(tool);
+        odontogramState[toothNum] = tool;
+      } else {
+        delete odontogramState[toothNum];
+      }
+    }
+
+    /**
+     * ========================================================================
+     * 8. TV MONITOR ANTREAN & WEB SPEECH API DENGAN BELL SYNTHESIZER
+     * ========================================================================
+     */
+    let tvPollingInterval = null;
+
+    function openTvQueue() {
+      document.getElementById('landingView').style.display = 'none';
+      document.getElementById('portalView').style.display = 'none';
+      document.getElementById('tvView').style.display = 'block';
+      fetchTvQueueData();
+      if (!tvPollingInterval) {
+        tvPollingInterval = setInterval(fetchTvQueueData, 6000);
+      }
+    }
+
+    function closeTvQueue() {
+      document.getElementById('tvView').style.display = 'none';
+      document.getElementById('landingView').style.display = 'block';
+      if (tvPollingInterval) {
+        clearInterval(tvPollingInterval);
+        tvPollingInterval = null;
+      }
+    }
+
+    function fetchTvQueueData() {
+      const poli = document.getElementById('tvFilterPoli').value;
+      runApi('getQueueTvData', { poli: poli })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            updateTvDisplay(res.activeQueue, res.nextQueues);
+          }
+        })
+        .catch(function(err) {
+          console.error('Error fetchTvQueueData:', err);
+        });
+    }
+
+    function updateTvDisplay(active, nextList) {
+      const numElem = document.getElementById('tvCurrentQueue');
+      const roomElem = document.getElementById('tvCurrentRoom');
+      const docElem = document.getElementById('tvCurrentDoctor');
+      const nextElem = document.getElementById('tvNextList');
+
+      if (active) {
+        if (numElem.innerText !== active.kode) {
+          // Bunyikan panggilan suara otomatis jika ada pergantian antrean
+          playChimeAndSpeak(active.kode, active.ruanganPoli);
+        }
+        numElem.innerText = active.kode;
+        roomElem.innerText = active.ruanganPoli;
+        docElem.innerText = active.dokterNama;
+      } else {
+        numElem.innerText = '---';
+        roomElem.innerText = 'Menunggu Panggilan';
+        docElem.innerText = 'Klinik Akshara Dental Space';
+      }
+
+      let html = '';
+      if (nextList && nextList.length > 0) {
+        for (let i = 0; i < nextList.length; i++) {
+          const item = nextList[i];
+          html += '<div style="background:#1e293b; padding:10px 14px; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">' +
+            '<div>' +
+              '<div style="font-weight:700; color:#38bdf8;">' + item.kode + '</div>' +
+              '<div style="font-size:0.8rem; color:#94a3b8;">' + item.namaPasien + '</div>' +
+            '</div>' +
+            '<div style="font-size:0.8rem; color:#cbd5e1;">' + item.ruanganPoli + '</div>' +
+          '</div>';
+        }
+      } else {
+        html = '<div style="color:#64748b; font-size:0.85rem; text-align:center;">Belum ada antrean berikutnya.</div>';
+      }
+      nextElem.innerHTML = html;
+    }
+
+    function playChimeAndSpeak(kode, poli) {
+      // Audio Synthesizer Dua Nada (880Hz -> 659Hz)
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Nada A5
+        osc.frequency.setValueAtTime(659, audioCtx.currentTime + 0.3); // Nada E5
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+      } catch (e) {
+        console.log('AudioContext belum diizinkan interaksi');
+      }
+
+      // Web Speech API Bahasa Indonesia
+      setTimeout(function() {
+        if ('speechSynthesis' in window) {
+          const speechText = 'Nomor antrean, ' + kode.replace(/-/g, ' ') + ', silakan menuju ke ' + (poli || 'ruang periksa');
+          const utterance = new SpeechSynthesisUtterance(speechText);
+          utterance.lang = 'id-ID';
+          utterance.rate = 0.9;
+          window.speechSynthesis.speak(utterance);
+        }
+      }, 900);
+    }
+
+    /**
+     * ========================================================================
+     * 9. AUTENTIKASI PORTAL STAF & ROLE ROUTING
+     * ========================================================================
+     */
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('show');
+    }
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('show');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value.trim();
+      const btn = document.getElementById('btnLoginSubmit');
+      btn.disabled = true;
+
+      runApi('login', { username: u, password: p })
+        .then(function(res) {
+          btn.disabled = false;
+          if (res && res.status === 'success') {
+            currentUser = res.user;
+            closeLoginModal();
+            showToast('Selamat datang, ' + currentUser.fullName, 'success');
+            openPortalDashboard();
+          } else {
+            showToast(res.message || 'Login gagal!', 'error');
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          showToast('Error login: ' + err.toString(), 'error');
+        });
+    }
+
+    function logoutUser() {
+      currentUser = null;
+      document.getElementById('portalView').style.display = 'none';
+      document.getElementById('landingView').style.display = 'block';
+      showToast('Anda telah logout dengan aman.', 'info');
+    }
+
+    function openPortalDashboard() {
+      document.getElementById('landingView').style.display = 'none';
+      document.getElementById('tvView').style.display = 'none';
+      document.getElementById('portalView').style.display = 'block';
+
+      document.getElementById('portalGreeting').innerText = 'Selamat Datang, ' + currentUser.fullName;
+      document.getElementById('portalRoleBadge').innerText = 'Role: ' + currentUser.role + ' (' + currentUser.poliklinikId + ')';
+
+      setupPortalTabsByRole(currentUser.role);
+    }
+
+    function setupPortalTabsByRole(role) {
+      const container = document.getElementById('portalNavTabs');
+      let html = '';
+
+      if (role === 'Dokter') {
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'dokter\')"><i class="fa-solid fa-user-doctor"></i> Pelayanan Medis & CPPT</button>';
+        switchStaffSection('dokter');
+        loadDoctorQueueData();
+      } else if (role === 'Kasir') {
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'kasir\')"><i class="fa-solid fa-cash-register"></i> Kasir & POS</button>';
+        switchStaffSection('kasir');
+        checkPosShiftStatus();
+      } else if (role === 'Admin') {
+        html += '<button class="tab-btn active" onclick="switchStaffSection(\'admin\')"><i class="fa-solid fa-gear"></i> Sistem & Gemini API</button>';
+        html += '<button class="tab-btn" onclick="switchStaffSection(\'dokter\')"><i class="fa-solid fa-stethoscope"></i> Preview Medis</button>';
+        html += '<button class="tab-btn" onclick="switchStaffSection(\'kasir\')"><i class="fa-solid fa-cash-register"></i> Kasir POS</button>';
+        switchStaffSection('admin');
+        loadAdminSettingsAndAnalytics();
+      }
+      container.innerHTML = html;
+    }
+
+    function switchStaffSection(sec) {
+      document.getElementById('staffSectionDokter').style.display = sec === 'dokter' ? 'block' : 'none';
+      document.getElementById('staffSectionKasir').style.display = sec === 'kasir' ? 'block' : 'none';
+      document.getElementById('staffSectionAdmin').style.display = sec === 'admin' ? 'block' : 'none';
+    }
+
+    /**
+     * ========================================================================
+     * 10. FITUR DOKTER: SOAP CPPT, ALERGI, & GEMINI AI
+     * ========================================================================
+     */
+    function loadDoctorQueueData() {
+      const docId = currentUser ? currentUser.userId : '';
+      runApi('getDoctorQueue', { dokterId: '' })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            renderDoctorQueueList(res.list || []);
+          }
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
+    }
+
+    function renderDoctorQueueList(list) {
+      const container = document.getElementById('doctorQueueList');
+      if (!container) return;
+      let html = '';
+      for (let i = 0; i < list.length; i++) {
+        const item = list[i];
+        html += '<div class="glass-card" style="padding:12px; cursor:pointer;" onclick="selectPatientForExam(\'' + encodeURIComponent(JSON.stringify(item)) + '\')">' +
+          '<div style="display:flex; justify-content:space-between; align-items:center;">' +
+            '<strong style="color:var(--primary);">' + item.kodeAntrean + '</strong>' +
+            '<span style="font-size:0.75rem; padding:2px 8px; border-radius:8px; background:var(--badge-bg);">' + item.statusAntrean + '</span>' +
+          '</div>' +
+          '<div style="font-weight:700; margin:4px 0;">' + item.namaPasien + ' (' + item.nomorRm + ')</div>' +
+          '<div style="font-size:0.8rem; color:var(--text-muted);">' + item.keluhanUtama + '</div>' +
+        '</div>';
+      }
+      container.innerHTML = html || '<div style="color:var(--text-muted); font-size:0.85rem;">Tidak ada antrean hari ini.</div>';
+    }
+
+    function selectPatientForExam(itemJsonStr) {
+      const item = JSON.parse(decodeURIComponent(itemJsonStr));
+      activeDoctorPatient = item;
+
+      document.getElementById('selectedPatientBadge').innerHTML = 'Pasien Aktif: <strong>' + item.namaPasien + '</strong> (' + item.nomorRm + ') | No: ' + item.kodeAntrean;
+      document.getElementById('cpptSubjektif').value = item.keluhanUtama || '';
+
+      // Tampilkan peringatan alergi obat
+      const allergyBox = document.getElementById('patientAllergyAlert');
+      if (item.alergi && item.alergi.toLowerCase() !== 'tidak ada') {
+        document.getElementById('alertAlergiText').innerText = item.alergi;
+        allergyBox.style.display = 'block';
+      } else {
+        allergyBox.style.display = 'none';
+      }
+
+      // Tampilkan odontogram jika poli gigi
+      document.getElementById('odontogramModule').style.display = 'block';
+    }
+
+    function callGeminiAiAssist() {
+      const s = document.getElementById('cpptSubjektif').value;
+      const o = document.getElementById('cpptObjektif').value;
+      if (!s && !o) {
+        showToast('Isi Subjektif atau Objektif terlebih dahulu!', 'error');
+        return;
+      }
+      const box = document.getElementById('aiRecommendationBox');
+      const txt = document.getElementById('aiRecommendationText');
+      box.style.display = 'block';
+      txt.innerText = 'Meminta rekomendasi dari Gemini AI Medical Assistant...';
+
+      const prompt = 'Kasus Medis Klinik: Subjektif: ' + s + ', Objektif: ' + o + '. ' +
+        'Berikan: 1. Diferensial Diagnosa (ICD-10), 2. Anjuran SOAP ringkas, 3. Peringatan kontraindikasi.';
+
+      runApi('askGemini', { prompt: prompt })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            txt.innerText = res.text;
+          } else {
+            txt.innerText = 'Gagal: ' + (res.message || 'Kunci API Gemini belum aktif.');
+          }
+        })
+        .catch(function(err) {
+          txt.innerText = 'Error AI: ' + err.toString();
+        });
+    }
+
+    function submitCppt() {
+      if (!activeDoctorPatient) {
+        showToast('Pilih pasien terlebih dahulu!', 'error');
+        return;
+      }
+      const payload = {
+        kodeAntrean: activeDoctorPatient.kodeAntrean,
+        nomorRm: activeDoctorPatient.nomorRm,
+        dokterId: currentUser ? currentUser.userId : 'DOC-001',
+        tandaVital: document.getElementById('cpptVital').value,
+        subjektif: document.getElementById('cpptSubjektif').value,
+        objektif: document.getElementById('cpptObjektif').value,
+        asesmenIcd: document.getElementById('cpptAsesmen').value,
+        planTindakan: document.getElementById('cpptPlan').value,
+        odontogram: odontogramState,
+        catatanAi: document.getElementById('aiRecommendationText').innerText
+      };
+
+      runApi('saveCppt', payload)
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast('CPPT Medis berhasil disimpan!', 'success');
+            loadDoctorQueueData();
+          }
+        })
+        .catch(function(err) {
+          showToast('Error: ' + err.toString(), 'error');
+        });
+    }
+
+    /**
+     * ========================================================================
+     * 11. GENERATOR DOKUMEN RESMI PDF
+     * ========================================================================
+     */
+    function openDocGeneratorModal() {
+      if (!activeDoctorPatient) {
+        showToast('Pilih pasien terlebih dahulu!', 'error');
+        return;
+      }
+      document.getElementById('docModal').classList.add('show');
+    }
+    function closeDocModal() {
+      document.getElementById('docModal').classList.remove('show');
+    }
+
+    function submitGenerateDoc() {
+      const payload = {
+        jenisDokumen: document.getElementById('docTypeSelect').value,
+        nomorRm: activeDoctorPatient.nomorRm,
+        namaPasien: activeDoctorPatient.namaPasien,
+        kodeAntrean: activeDoctorPatient.kodeAntrean,
+        dokterId: currentUser ? currentUser.userId : 'DOC-001',
+        namaDokter: currentUser ? currentUser.fullName : 'drg. Akshara Sp.KG',
+        diagnosa: document.getElementById('docDiagnosa').value,
+        keterangan: document.getElementById('docKeterangan').value,
+        user: currentUser ? currentUser.username : 'DOKTER'
+      };
+
+      runApi('generateMedicalDoc', payload)
+        .then(function(res) {
+          closeDocModal();
+          if (res && res.status === 'success') {
+            showToast('Dokumen ' + res.nomorSurat + ' berhasil diterbitkan!', 'success');
+            if (res.fileUrl) window.open(res.fileUrl, '_blank');
+          }
+        })
+        .catch(function(err) {
+          showToast('Error: ' + err.toString(), 'error');
+        });
+    }
+
+    /**
+     * ========================================================================
+     * 12. POS KASIR: SHIFT BALANCING, BILLING & PRINT THERMAL
+     * ========================================================================
+     */
+    let currentShift = null;
+    let activeBilling = null;
+
+    function checkPosShiftStatus() {
+      const box = document.getElementById('posShiftStatusBox');
+      const action = document.getElementById('posShiftActionArea');
+      const kasirId = currentUser ? currentUser.fullName : 'Kasir Utama';
+
+      runApi('checkActiveShift', { kasirId: kasirId })
+        .then(function(res) {
+          if (res && res.hasActiveShift) {
+            currentShift = res.shift;
+            box.innerHTML = '<strong>Shift Terbuka:</strong> ' + currentShift.shiftId + ' | Kasir: ' + currentShift.namaKasir + ' | Modal Awal: Rp ' + currentShift.modalAwal.toLocaleString();
+            action.innerHTML = '<button class="nav-btn btn-outline" style="color:#ef4444; border-color:#ef4444; width:100%; justify-content:center;" onclick="promptCloseShift()"><i class="fa-solid fa-lock"></i> Tutup Shift (Z-Report)</button>';
+          } else {
+            currentShift = null;
+            box.innerHTML = 'Tidak ada shift aktif. Silakan buka shift baru.';
+            action.innerHTML = '<div style="display:flex; flex-direction:column; gap:10px;">' +
+              '<input type="number" id="newShiftFloat" placeholder="Modal Awal Laci (Starting Float) Rp..." />' +
+              '<button class="nav-btn btn-primary" style="justify-content:center;" onclick="openNewShift()"><i class="fa-solid fa-door-open"></i> Buka Shift Baru</button>' +
+            '</div>';
+          }
+        });
+    }
+
+    function openNewShift() {
+      const modalAwal = document.getElementById('newShiftFloat').value;
+      if (!modalAwal) {
+        showToast('Masukkan modal awal kasir!', 'error');
+        return;
+      }
+      runApi('openCashierShift', {
+        kasirId: currentUser ? currentUser.userId : 'USR-007',
+        namaKasir: currentUser ? currentUser.fullName : 'Kasir',
+        shiftKerja: 'Pagi',
+        modalAwal: modalAwal
+      }).then(function(res) {
+        if (res && res.status === 'success') {
+          showToast('Shift berhasil dibuka!', 'success');
+          checkPosShiftStatus();
+        }
+      });
+    }
+
+    function promptCloseShift() {
+      const actualCash = prompt('TUTUP SHIFT: Masukkan Total Uang Tunai Fisik di Laci Kasir (Rp):');
+      if (actualCash === null) return;
+
+      runApi('closeCashierShift', {
+        shiftId: currentShift.shiftId,
+        actualCash: actualCash,
+        catatan: 'Tutup shift kasir reguler',
+        user: currentUser ? currentUser.username : 'KASIR'
+      }).then(function(res) {
+        if (res && res.status === 'success') {
+          const z = res.zReport;
+          alert('=== LAPORAN Z-REPORT SHIFT ===\n' +
+            'Shift ID: ' + z.shiftId + '\n' +
+            'Total Tunai Sistem: Rp ' + z.totalTunai.toLocaleString() + '\n' +
+            'Fisik Tunai Laci: Rp ' + z.actualCash.toLocaleString() + '\n' +
+            'Selisih Kas: Rp ' + z.selisih.toLocaleString() + ' (' + z.statusSelisih + ')');
+          checkPosShiftStatus();
+        }
+      });
+    }
+
+    function loadBillingDetails() {
+      const q = document.getElementById('posBillingSearch').value.trim();
+      if (!q) return;
+
+      runApi('getBillingDetails', { kodeAntrean: q, nomorRm: q })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            activeBilling = res;
+            document.getElementById('billingSummaryArea').style.display = 'block';
+            document.getElementById('billingPatientInfo').innerText = 'Pasien: ' + res.namaPasien + ' (' + res.nomorRm + ') | No: ' + res.kodeAntrean;
+
+            let html = '';
+            for (let i = 0; i < res.items.length; i++) {
+              const item = res.items[i];
+              html += '<tr style="border-bottom:1px solid var(--glass-border);">' +
+                '<td style="padding:6px;">' + item.nama + '</td>' +
+                '<td style="padding:6px; text-align:center;">' + item.jumlah + '</td>' +
+                '<td style="padding:6px; text-align:right;">Rp ' + item.subtotal.toLocaleString() + '</td>' +
+              '</tr>';
+            }
+            html += '<tr style="font-weight:800; border-top:1.5px solid var(--glass-border);">' +
+              '<td colspan="2" style="padding:8px;">TOTAL AKHIR</td>' +
+              '<td style="padding:8px; text-align:right;">Rp ' + res.subtotal.toLocaleString() + '</td>' +
+            '</tr>';
+            document.getElementById('billingTableBody').innerHTML = html;
+            document.getElementById('posNominalBayar').value = res.subtotal;
+            calculateChange();
+          }
+        });
+    }
+
+    function calculateChange() {
+      if (!activeBilling) return;
+      const bayar = parseInt(document.getElementById('posNominalBayar').value) || 0;
+      const kembali = Math.max(0, bayar - activeBilling.subtotal);
+      document.getElementById('posKembalianText').innerText = 'Rp ' + kembali.toLocaleString();
+    }
+
+    function submitPosPayment() {
+      if (!activeBilling) return;
+      const payload = {
+        shiftId: currentShift ? currentShift.shiftId : '',
+        kodeAntrean: activeBilling.kodeAntrean,
+        nomorRm: activeBilling.nomorRm,
+        items: activeBilling.items,
+        subtotal: activeBilling.subtotal,
+        diskon: 0,
+        totalAkhir: activeBilling.subtotal,
+        metodeBayar: document.getElementById('posMetodeBayar').value,
+        nominalBayar: parseInt(document.getElementById('posNominalBayar').value) || activeBilling.subtotal,
+        nominalKembali: Math.max(0, (parseInt(document.getElementById('posNominalBayar').value) || activeBilling.subtotal) - activeBilling.subtotal),
+        kasirId: currentUser ? currentUser.userId : 'KASIR'
+      };
+
+      runApi('processPayment', payload)
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast('Pembayaran Berhasil! No Transaksi: ' + res.transaksiId, 'success');
+            document.getElementById('billingSummaryArea').style.display = 'none';
+          }
+        });
+    }
+
+    function printThermalReceipt() {
+      window.print();
+    }
+
+    /**
+     * ========================================================================
+     * 13. SUPER ADMIN & GEMINI API KEY MANAGEMENT
+     * ========================================================================
+     */
+    function loadAdminSettingsAndAnalytics() {
+      runApi('getSystemSettings', { adminUserId: currentUser ? currentUser.userId : 'ADMIN' })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            document.getElementById('adminGeminiKeyInput').value = res.settings.GEMINI_API_KEY || '';
+          }
+        });
+
+      runApi('getAnalytics', {})
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            const grid = document.getElementById('adminAnalyticsGrid');
+            grid.innerHTML = '<div style="padding:14px; border-radius:12px; background:var(--badge-bg); text-align:center;">' +
+              '<div style="font-size:1.8rem; font-weight:800; color:var(--primary);">' + res.totalPasien + '</div>' +
+              '<div style="font-size:0.8rem; color:var(--text-muted);">Pasien Hari Ini</div>' +
+            '</div>' +
+            '<div style="padding:14px; border-radius:12px; background:var(--badge-bg); text-align:center;">' +
+              '<div style="font-size:1.8rem; font-weight:800; color:#059669;">Rp ' + res.totalOmset.toLocaleString() + '</div>' +
+              '<div style="font-size:0.8rem; color:var(--text-muted);">Omset Kasir</div>' +
+            '</div>';
+          }
+        });
+
+      runApi('getAuditLogs', { page: 1, limit: 15 })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            const tbody = document.getElementById('adminAuditTableBody');
+            let html = '';
+            for (let i = 0; i < res.logs.length; i++) {
+              const l = res.logs[i];
+              html += '<tr style="border-bottom:1px solid var(--glass-border);">' +
+                '<td style="padding:8px; font-size:0.75rem;">' + l.timestamp + '</td>' +
+                '<td style="padding:8px; font-weight:700;">' + l.user + '</td>' +
+                '<td style="padding:8px; color:var(--primary);">' + l.aksi + '</td>' +
+                '<td style="padding:8px;">' + l.modul + '</td>' +
+                '<td style="padding:8px; font-size:0.8rem;">' + l.detail + '</td>' +
+              '</tr>';
+            }
+            tbody.innerHTML = html;
+          }
+        });
+    }
+
+    function togglePasswordEye(inputId) {
+      const el = document.getElementById(inputId);
+      el.type = el.type === 'password' ? 'text' : 'password';
+    }
+
+    function testGeminiConnection() {
+      const k = document.getElementById('adminGeminiKeyInput').value.trim();
+      showToast('Menguji koneksi ke endpoint Google Generative Language...', 'info');
+      runApi('testGeminiKey', { apiKey: k })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            showToast(res.message, 'success');
+          } else {
+            showToast(res.message || 'Koneksi gagal.', 'error');
+          }
+        });
+    }
+
+    function saveGeminiSettings() {
+      const k = document.getElementById('adminGeminiKeyInput').value.trim();
+      runApi('updateSystemSettings', {
+        adminUserId: currentUser ? currentUser.userId : 'ADMIN',
+        configKey: 'GEMINI_API_KEY',
+        configValue: k
+      }).then(function(res) {
+        if (res && res.status === 'success') {
+          showToast('GEMINI_API_KEY berhasil disimpan ke sheet SETTINGS!', 'success');
+        }
+      });
+    }
+
+    /**
+     * ========================================================================
+     * 14. FLOATING WHATSAPP INTERAKTIF & PWA INSTALLER
+     * ========================================================================
+     */
+    function toggleWaBox() {
+      const box = document.getElementById('waChatBox');
+      box.classList.toggle('show');
+    }
+
+    function sendQuickWa() {
+      const msg = document.getElementById('waQuickMsgInput').value.trim() || 'Halo Admin Klinik Akshara';
+      const targetUrl = 'https://api.whatsapp.com/send/?phone=6285338922586&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0';
+      window.open(targetUrl, '_blank');
+      toggleWaBox();
+    }
+
+    function openPwaModal() {
+      document.getElementById('pwaModal').classList.add('show');
+    }
+    function closePwaModal() {
+      document.getElementById('pwaModal').classList.remove('show');
+    }
+
+    function initPwaService() {
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        deferredPwaPrompt = e;
+        const btn = document.getElementById('btnInstallPwa');
+        if (btn) btn.style.display = 'block';
+      });
+    }
+
+    function triggerPwaInstall() {
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+        deferredPwaPrompt.userChoice.then(function(choice) {
+          deferredPwaPrompt = null;
+          closePwaModal();
+        });
+      } else {
+        showToast('Instalasi otomatis tidak didukung di browser ini. Gunakan menu Add to Home Screen manual.', 'info');
+      }
+    }
+
+    function checkUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('display') === 'true') {
+        openTvQueue();
+      }
+    }
+  </script>
+</body>
+</html>
