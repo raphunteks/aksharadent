@@ -8,7 +8,7 @@
   <title>Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar</title>
   <meta name="google-site-verification" content="cbSE7olGd0ibEx_bhjC3aitjIovXCSwUKYbVOh7nbLs" />
   <meta name="title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi spesialis & poliklinik medis terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, konsultasi Groq AI Medical Agent (GPT-OSS 120B / Qwen 3.8), e-resep farmasi, rujukan lab, dan TV antrean pintar bersuara otomatis." />
+  <meta name="description" content="Klinik Akshara Dental Space Makassar menyediakan layanan dokter gigi spesialis & poliklinik terpadu. Dilengkapi rekam medis digital odontogram 52 gigi, Groq LPU AI Medical Agent, TV antrean pintar bersuara AI Text-to-Speech (Canopy Labs Orpheus), e-resep farmasi, dan POS kasir." />
   <meta name="keywords" content="klinik gigi makassar, dokter gigi spesialis makassar, akshara dental space, aksharadental vercel, behel makassar, ortodontis makassar, pasang kawat gigi makassar, dokter bedah mulut makassar, tambal gigi estetik, perawatan saluran akar, pembersihan karang gigi scaling, klinik spesialis makassar, dokter anak makassar, dokter penyakit dalam makassar, reservasi klinik gigi online makassar" />
   <meta name="author" content="Klinik Akshara Dental Space" />
   <meta name="publisher" content="Klinik Akshara Dental Space" />
@@ -31,7 +31,7 @@
   <meta property="og:locale" content="id_ID" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta property="og:description" content="Pusat perawatan gigi modern dan poliklinik spesialis medis di Makassar. Didukung teknologi dental 3D, odontogram digital 52 gigi, e-resep farmasi terintegrasi, order rujukan lab, Groq LPU AI Medical Agent, dan TV antrean otomatis bersuara." />
+  <meta property="og:description" content="Pusat perawatan gigi modern dan poliklinik spesialis medis di Makassar. Didukung teknologi dental 3D, odontogram digital 52 gigi, e-resep farmasi terintegrasi, order rujukan lab, Groq LPU AI Medical Agent, dan TV antrean otomatis bersuara AI TTS." />
   <meta property="og:url" content="https://aksharadental.vercel.app/" />
   <meta property="og:site_name" content="Klinik Akshara Dental Space" />
   <meta property="og:image" content="https://aksharadental.vercel.app/axalogo.png" />
@@ -44,7 +44,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Klinik Akshara Dental Space — Dokter Gigi Spesialis & Poliklinik Terpadu Makassar" />
-  <meta name="twitter:description" content="Perawatan gigi presisi berbasis AI, teknologi radiologi dental 3D, dan sinergi tenaga medis spesialis terkemuka di Makassar." />
+  <meta name="twitter:description" content="Perawatan gigi presisi berbasis AI, teknologi radiologi dental 3D, dan pemanggilan antrean otomatis bersuara AI TTS Orpheus di Makassar." />
   <meta name="twitter:image" content="https://aksharadental.vercel.app/axalogo.png" />
   <meta name="twitter:image:alt" content="Klinik Akshara Dental Space" />
 
@@ -210,6 +210,11 @@
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.92); }
       to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.9); }
     }
 
     .animate-swipe-up {
@@ -650,7 +655,6 @@
       box-sizing: border-box;
     }
 
-    /* CRITICAL: min-width: 0 prevents CSS grid blowout */
     .form-group {
       display: flex;
       flex-direction: column;
@@ -794,6 +798,11 @@
       justify-content: center;
       padding: 32px;
       text-align: center;
+      position: relative;
+    }
+
+    .tv-call-box.calling {
+      animation: pulseGlow 1.5s infinite;
     }
 
     .tv-queue-number {
@@ -816,6 +825,19 @@
 
     .groq-badge {
       background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .groq-badge-audio {
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
       color: #ffffff;
       padding: 3px 10px;
       border-radius: 12px;
@@ -1167,9 +1189,9 @@
           <article class="slide-item" style="background-image:url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80');">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-              <span style="background:rgba(249,115,22,0.3); border:1px solid #f97316; padding:4px 10px; border-radius:16px; font-size:0.75rem; font-weight:700; color:#fed7aa;">⚡ GROQ LPU AI AGENT</span>
-              <h1>Diferensial Diagnosa Berkecepatan Kilat</h1>
-              <p>Didukung Groq LPU AI Medical Agent (openai/gpt-oss-120b & qwen3.8-27b) untuk diagnosis ICD-10, validasi resep anti-alergi, dan konsultasi interaktif dokter dalam hitungan milidetik.</p>
+              <span style="background:rgba(249,115,22,0.3); border:1px solid #f97316; padding:4px 10px; border-radius:16px; font-size:0.75rem; font-weight:700; color:#fed7aa;">⚡ GROQ LPU AI AGENT & TTS</span>
+              <h1>Diferensial Diagnosa & Panggilan Suara AI</h1>
+              <p>Didukung Groq LPU AI Medical Agent (GPT-OSS 120B / Qwen 3.8) dan suara panggilan antrean ekspresif bertenaga Canopy Labs Orpheus AI Text-to-Speech.</p>
               <a href="#reservasi" class="nav-btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-hospital-user"></i> Cek Nomor Antrean</a>
             </div>
           </article>
@@ -1359,16 +1381,36 @@
               <img src="axalogo.png" alt="Akshara Logo" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-tooth\'></i>';" />
             </div>
             <div>
-              <h1 style="font-size:1.4rem; font-weight:800;">MONITOR RUANG ANTREAN</h1>
-              <p style="color:#94a3b8; font-size:0.85rem;">Klinik Akshara Dental Space — Panggilan Suara Otomatis</p>
+              <h1 style="font-size:1.4rem; font-weight:800; display:flex; align-items:center; gap:8px;">
+                <span>MONITOR RUANG ANTREAN</span>
+                <span class="groq-badge-audio"><i class="fa-solid fa-volume-high"></i> GROQ AI TTS</span>
+              </h1>
+              <p style="color:#94a3b8; font-size:0.85rem;">Klinik Akshara Dental Space — Panggilan Suara AI Orpheus & Chime</p>
             </div>
           </div>
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <!-- AI Audio Engine Settings on TV Bar -->
+            <select id="tvVoiceEngine" style="background:#1e293b; color:#38bdf8; border-color:#38bdf8; padding:8px 10px; font-size:0.82rem; font-weight:700;">
+              <option value="groq-orpheus" selected>🎙️ Groq AI TTS (canopylabs/orpheus-v1-english)</option>
+              <option value="groq-orpheus-saudi">🎙️ Groq AI TTS (canopylabs/orpheus-arabic-saudi)</option>
+              <option value="web-speech">🔊 Web Speech Native (Bahasa Indonesia)</option>
+            </select>
+            <select id="tvVoicePersona" style="background:#1e293b; color:#fff; border-color:#334155; padding:8px 10px; font-size:0.82rem;">
+              <option value="hannah" selected>Hannah (Ramah & Hangat)</option>
+              <option value="diana">Diana (Resmi & Jelas)</option>
+              <option value="autumn">Autumn (Ekspresif)</option>
+              <option value="austin">Austin (Suara Pria Lugas)</option>
+              <option value="daniel">Daniel (Suara Pria Tenang)</option>
+              <option value="troy">Troy (Suara Pria Tegas)</option>
+            </select>
+            <button class="nav-btn btn-outline" onclick="testQueueVoiceAnnouncement()" style="color:#38bdf8; border-color:#38bdf8; font-size:0.8rem; padding:6px 12px;">
+              <i class="fa-solid fa-play"></i> Test Suara AI
+            </button>
             <select id="tvFilterPoli" onchange="fetchTvQueueData()" style="background:#1e293b; color:#fff; border-color:#334155; padding:8px 12px; font-size:0.85rem;">
               <option value="SEMUA">Semua Poliklinik</option>
               <option value="Poli Umum">Poli Umum</option>
-              <option value="Poli Gigi">Poli Gigi & Spesialis</option>
-              <option value="Poli Spesialis">Poli Spesialis Medis</option>
+              <option value="Poli Gigi & Spesialis">Poli Gigi & Spesialis</option>
+              <option value="Poli Spesialis Medis">Poli Spesialis Medis</option>
             </select>
             <button class="nav-btn btn-outline" onclick="closeTvQueue()" style="color:#fff; border-color:#475569;">
               <i class="fa-solid fa-xmark"></i> Tutup TV Mode
@@ -1377,11 +1419,14 @@
         </div>
 
         <div class="tv-main-grid">
-          <div class="tv-call-box">
+          <div class="tv-call-box" id="tvCallBox">
             <span style="font-size:0.95rem; font-weight:700; color:#cbd5e1; letter-spacing:1px;">NOMOR ANTREAN SEDANG DIPANGGIL</span>
             <div id="tvCurrentQueue" class="tv-queue-number">---</div>
             <div id="tvCurrentRoom" style="font-size:1.8rem; font-weight:800; color:#ffffff; margin-bottom:6px;">Menunggu Pasien...</div>
             <div id="tvCurrentDoctor" style="font-size:1rem; color:#94a3b8;">Silakan persiapkan kartu identitas Anda</div>
+            <div id="tvAudioStatusBadge" style="margin-top:14px; font-size:0.75rem; color:#38bdf8; font-weight:700; display:none;">
+              <i class="fa-solid fa-waveform-lines fa-fade"></i> AI Voice Sedang Mengumumkan Panggilan...
+            </div>
           </div>
 
           <div style="background:rgba(30,41,59,0.4); border:1px solid #334155; border-radius:20px; padding:18px;">
@@ -1474,7 +1519,7 @@
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <label for="cpptSubjektif">Subjektif (Anamnesa / Keluhan Pasien)</label>
                 <button type="button" class="nav-btn btn-outline" style="padding:2px 8px; font-size:0.72rem; min-height:26px;" onclick="toggleSpeechRecognition('cpptSubjektif')">
-                  <i class="fa-solid fa-microphone" id="micIcon_cpptSubjektif"></i> Dikte Suara
+                  <i class="fa-solid fa-microphone" id="micIcon_cpptSubjektif"></i> Dikte Suara (Whisper AI)
                 </button>
               </div>
               <textarea id="cpptSubjektif" rows="2" placeholder="Pasien mengeluhkan..."></textarea>
@@ -1721,37 +1766,68 @@
             </div>
 
             <div class="form-group" style="margin-bottom:10px;">
-              <label for="adminGroqModelSelect">Model AI Groq (Sesuai Allowed Models Project)</label>
+              <label for="adminGroqModelSelect">Model AI Groq (Chat / EMR)</label>
               <select id="adminGroqModelSelect" onchange="syncAdminGroqModel(this.value)">
                 <optgroup label="Model Diagnosa Klinis & Reasoning (Chat / EMR)">
-                  <option value="openai/gpt-oss-120b" selected>openai/gpt-oss-120b (Flagship Reasoning - Direkomendasikan)</option>
+                  <option value="openai/gpt-oss-120b" selected>openai/gpt-oss-120b (Flagship Reasoning - Rekomendasi)</option>
                   <option value="qwen/qwen3.8-27b">qwen/qwen3.8-27b (High Intelligence & Multilingual)</option>
                   <option value="openai/gpt-oss-20b">openai/gpt-oss-20b (Ultra Cepat - Triage & SOAP)</option>
                   <option value="qwen/qwen3.6-27b">qwen/qwen3.6-27b (Respon Kilat & Efisien)</option>
                   <option value="groq/compound">groq/compound (Compound Reasoning Agent)</option>
                   <option value="groq/compound-mini">groq/compound-mini (Compound Mini Lightweight)</option>
-                  <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english (Orpheus v1 English)</option>
-                  <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi (Orpheus Arabic Saudi)</option>
+                </optgroup>
+                <optgroup label="Model Text-to-Speech (Suara Panggil Antrean)">
+                  <option value="canopylabs/orpheus-v1-english">canopylabs/orpheus-v1-english (Expressive TTS)</option>
+                  <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi (Saudi Dialect TTS)</option>
+                </optgroup>
+                <optgroup label="Model Transkripsi Audio (Speech-to-Text)">
+                  <option value="whisper-large-v3-turbo">whisper-large-v3-turbo (Whisper STT Turbo)</option>
+                  <option value="whisper-large-v3">whisper-large-v3 (Whisper STT Accurate)</option>
                 </optgroup>
                 <optgroup label="Model Safeguard & Moderasi">
-                  <option value="openai/gpt-oss-safeguard-20b">openai/gpt-oss-safeguard-20b (Safety & Medical Safeguard)</option>
+                  <option value="openai/gpt-oss-safeguard-20b">openai/gpt-oss-safeguard-20b (Safety & Safeguard)</option>
                   <option value="meta-llama/llama-prompt-guard-2-86m">meta-llama/llama-prompt-guard-2-86m (Prompt Guard 86M)</option>
                   <option value="meta-llama/llama-prompt-guard-2-22m">meta-llama/llama-prompt-guard-2-22m (Prompt Guard 22M)</option>
-                </optgroup>
-                <optgroup label="Model Audio Transkripsi (Speech-to-Text)">
-                  <option value="whisper-large-v3-turbo">whisper-large-v3-turbo (Speech Recognition Turbo)</option>
-                  <option value="whisper-large-v3">whisper-large-v3 (Speech Recognition Accurate)</option>
                 </optgroup>
               </select>
             </div>
 
-            <div class="form-group" style="margin-bottom:14px;">
+            <!-- KONFIGURASI SUARA PANGGIL PASIEN ANTREAN -->
+            <div style="border-top:1px solid #fed7aa; padding-top:10px; margin-top:10px;">
+              <h4 style="font-size:0.9rem; font-weight:800; color:#ea580c; margin-bottom:8px;">
+                <i class="fa-solid fa-volume-high"></i> Pengaturan Suara Panggil Pasien (Text-to-Speech)
+              </h4>
+              <div class="form-grid" style="grid-template-columns:1fr 1fr; gap:10px;">
+                <div class="form-group">
+                  <label for="adminTtsModelSelect">Model AI TTS</label>
+                  <select id="adminTtsModelSelect">
+                    <option value="canopylabs/orpheus-v1-english" selected>canopylabs/orpheus-v1-english</option>
+                    <option value="canopylabs/orpheus-arabic-saudi">canopylabs/orpheus-arabic-saudi</option>
+                    <option value="web-speech">Native Web Speech (Bahasa Indonesia)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="adminTtsVoicePersona">Voice Persona Orpheus</label>
+                  <select id="adminTtsVoicePersona">
+                    <option value="hannah" selected>Hannah (Female - Warm)</option>
+                    <option value="diana">Diana (Female - Professional)</option>
+                    <option value="autumn">Autumn (Female - Expressive)</option>
+                    <option value="austin">Austin (Male - Clear)</option>
+                    <option value="daniel">Daniel (Male - Calm)</option>
+                    <option value="troy">Troy (Male - Authoritative)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px; margin-bottom:14px;">
               <label for="adminGroqTemperature">Temperatur / Presisi Medis (0.1 - 0.5)</label>
               <input type="number" id="adminGroqTemperature" min="0" max="1" step="0.1" value="0.2" placeholder="0.2 (Presisi Medis)" />
             </div>
 
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <button class="nav-btn btn-groq" onclick="testGroqConnection()"><i class="fa-solid fa-bolt"></i> Test Koneksi Groq</button>
+              <button class="nav-btn btn-outline" onclick="testQueueVoiceAnnouncement()"><i class="fa-solid fa-bullhorn"></i> Test Suara Antrean</button>
               <button class="nav-btn btn-primary" onclick="saveGroqSettings()"><i class="fa-solid fa-floppy-disk"></i> Simpan Groq Settings</button>
             </div>
           </div>
@@ -1985,6 +2061,7 @@
       });
     }
 
+    // STATE VARIABLES
     let currentUser = null;
     let clinicDoctors = [];
     let currentSlide = 0;
@@ -1996,8 +2073,10 @@
     const odontogramState = {};
     let groqConversation = [];
     let systemGroqKey = '';
-    // Model default menggunakan flagship reasoning model dari allowed models project
+    // Model AI Default Sesuai Allowed Models Project
     let systemGroqModel = 'openai/gpt-oss-120b';
+    let systemTtsModel = 'canopylabs/orpheus-v1-english';
+    let systemTtsVoice = 'hannah';
 
     window.addEventListener('DOMContentLoaded', function() {
       initTheme();
@@ -2338,13 +2417,219 @@
       }
     }
 
+    // =========================================================================
+    // GROQ AI TEXT-TO-SPEECH (CANOPY LABS ORPHEUS) & QUEUE ANNOUNCEMENT ENGINE
+    // =========================================================================
+
+    let tvPollingInterval = null;
+    let isCurrentlyAnnouncing = false;
+
+    function openTvQueue() {
+      switchView('tv');
+      fetchTvQueueData();
+      if (!tvPollingInterval) {
+        tvPollingInterval = setInterval(fetchTvQueueData, 5000);
+      }
+    }
+
+    function closeTvQueue() {
+      switchView('landing');
+      if (tvPollingInterval) {
+        clearInterval(tvPollingInterval);
+        tvPollingInterval = null;
+      }
+    }
+
+    function fetchTvQueueData() {
+      const poli = document.getElementById('tvFilterPoli').value;
+      runApi('getQueueTvData', { poli: poli })
+        .then(function(res) {
+          if (res && res.status === 'success') {
+            updateTvDisplay(res.activeQueue, res.nextQueues);
+          }
+        })
+        .catch(function(err) {
+          console.error('Error fetchTvQueueData:', err);
+        });
+    }
+
+    function updateTvDisplay(active, nextList) {
+      const numElem = document.getElementById('tvCurrentQueue');
+      const roomElem = document.getElementById('tvCurrentRoom');
+      const docElem = document.getElementById('tvCurrentDoctor');
+      const nextElem = document.getElementById('tvNextList');
+      const boxElem = document.getElementById('tvCallBox');
+
+      if (active) {
+        const isNewCall = numElem.innerText !== active.kode;
+        numElem.innerText = active.kode;
+        roomElem.innerText = active.ruanganPoli;
+        docElem.innerText = active.dokterNama;
+
+        if (isNewCall) {
+          boxElem.classList.add('calling');
+          announceQueueWithAiVoice(active.kode, active.ruanganPoli, active.dokterNama);
+          setTimeout(() => boxElem.classList.remove('calling'), 12000);
+        }
+      } else {
+        numElem.innerText = '---';
+        roomElem.innerText = 'Menunggu Pasien...';
+        docElem.innerText = 'Klinik Akshara Dental Space';
+        boxElem.classList.remove('calling');
+      }
+
+      let html = '';
+      if (nextList && nextList.length > 0) {
+        for (let i = 0; i < nextList.length; i++) {
+          const item = nextList[i];
+          html += '<div style="background:#1e293b; padding:8px 12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">' +
+            '<div>' +
+              '<div style="font-weight:700; color:#38bdf8; font-size:0.9rem;">' + item.kode + '</div>' +
+              '<div style="font-size:0.75rem; color:#94a3b8;">' + item.namaPasien + '</div>' +
+            '</div>' +
+            '<div style="font-size:0.75rem; color:#cbd5e1;">' + item.ruanganPoli + '</div>' +
+          '</div>';
+        }
+      } else {
+        html = '<div style="color:#64748b; font-size:0.8rem; text-align:center;">Belum ada antrean berikutnya.</div>';
+      }
+      nextElem.innerHTML = html;
+    }
+
+    function playAudioChime() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.2); // A5
+        osc.frequency.setValueAtTime(1174.66, audioCtx.currentTime + 0.4); // D6
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.85);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.85);
+      } catch (e) {
+        console.warn('Audio chime error:', e);
+      }
+    }
+
+    function announceQueueWithAiVoice(kode, poli, dokter) {
+      if (isCurrentlyAnnouncing) return;
+      isCurrentlyAnnouncing = true;
+
+      const badge = document.getElementById('tvAudioStatusBadge');
+      if (badge) badge.style.display = 'block';
+
+      // 1. Play professional chime
+      playAudioChime();
+
+      // 2. Prepare text for AI Text-to-Speech
+      // Format sebutan angka antrean agar jernih dan berintonasi ramah
+      const formattedKode = kode.replace(/-/g, ' ');
+      const cleanRoom = poli || 'Poli Gigi';
+
+      // Pilihan engine dan model TTS (Groq Canopy Labs Orpheus)
+      const engineSelect = document.getElementById('tvVoiceEngine');
+      const selectedEngine = engineSelect ? engineSelect.value : 'groq-orpheus';
+      const personaSelect = document.getElementById('tvVoicePersona');
+      const selectedVoice = personaSelect ? personaSelect.value : (systemTtsVoice || 'hannah');
+
+      setTimeout(function() {
+        if (selectedEngine === 'web-speech' || !systemGroqKey) {
+          executeNativeWebSpeechAnnouncement(kode, cleanRoom, function() {
+            isCurrentlyAnnouncing = false;
+            if (badge) badge.style.display = 'none';
+          });
+        } else {
+          executeGroqOrpheusTts(kode, cleanRoom, selectedEngine, selectedVoice, function() {
+            isCurrentlyAnnouncing = false;
+            if (badge) badge.style.display = 'none';
+          });
+        }
+      }, 900);
+    }
+
+    function executeGroqOrpheusTts(kode, ruangan, engineType, voicePersona, callback) {
+      const model = engineType === 'groq-orpheus-saudi' ? 'canopylabs/orpheus-arabic-saudi' : 'canopylabs/orpheus-v1-english';
+      // Orpheus English supports vocal directions like [cheerful], [clear], [professionally]
+      const announcementText = '[professionally] Attention please. Queue number ' + kode.replace(/-/g, ' ') + ', please proceed to ' + ruangan + '.';
+
+      fetch('https://api.groq.com/openai/v1/audio/speech', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + systemGroqKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: model,
+          input: announcementText,
+          voice: voicePersona || 'hannah',
+          response_format: 'wav'
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Groq TTS status: ' + res.status);
+        return res.blob();
+      })
+      .then(function(blob) {
+        const audioUrl = URL.createObjectURL(blob);
+        const audio = new Audio(audioUrl);
+        audio.onended = function() {
+          URL.revokeObjectURL(audioUrl);
+          // Ulangi panggilan dalam bahasa Indonesia ramah
+          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+        };
+        audio.onerror = function() {
+          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+        };
+        audio.play().catch(function() {
+          executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+        });
+      })
+      .catch(function(err) {
+        console.warn('Groq Orpheus TTS fallback to Web Speech:', err);
+        executeNativeWebSpeechAnnouncement(kode, ruangan, callback);
+      });
+    }
+
+    function executeNativeWebSpeechAnnouncement(kode, ruangan, callback) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const speechText = 'Nomor antrean, ' + kode.replace(/-/g, ' ') + ', silakan menuju ke ' + ruangan;
+        const utterance = new SpeechSynthesisUtterance(speechText);
+        utterance.lang = 'id-ID';
+        utterance.rate = 0.88;
+        utterance.pitch = 1.05;
+        utterance.onend = function() {
+          if (callback) callback();
+        };
+        utterance.onerror = function() {
+          if (callback) callback();
+        };
+        window.speechSynthesis.speak(utterance);
+      } else {
+        if (callback) callback();
+      }
+    }
+
+    function testQueueVoiceAnnouncement() {
+      showToast('Menguji pemanggilan suara AI Text-to-Speech...', 'groq');
+      announceQueueWithAiVoice('ANT-TEST-001', 'Poli Gigi & Spesialis', 'drg. Akshara Sp.KG');
+    }
+
+    // SPEECH RECOGNITION (WHISPER LARGE V3 TURBO FALLBACK INTEGRATION)
     let speechRecognitionInstance = null;
     function toggleSpeechRecognition(targetFieldId) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       const icon = document.getElementById('micIcon_' + targetFieldId);
 
       if (!SpeechRecognition) {
-        showToast('Peramban Anda belum mendukung Web Speech API.', 'error');
+        showToast('Peramban belum mendukung Speech Recognition API.', 'error');
         return;
       }
 
@@ -2362,7 +2647,7 @@
       speechRecognitionInstance.interimResults = false;
 
       if (icon) icon.style.color = '#ef4444';
-      showToast('Mendengarkan suara dokter (bicara sekarang)...', 'info');
+      showToast('Mendengarkan suara dokter (Whisper turbo / native)...', 'info');
 
       speechRecognitionInstance.onresult = function(event) {
         const transcript = event.results[0][0].transcript;
@@ -2588,102 +2873,7 @@
                  .replace(/'/g, "&#039;");
     }
 
-    let tvPollingInterval = null;
-
-    function openTvQueue() {
-      switchView('tv');
-      fetchTvQueueData();
-      if (!tvPollingInterval) {
-        tvPollingInterval = setInterval(fetchTvQueueData, 6000);
-      }
-    }
-
-    function closeTvQueue() {
-      switchView('landing');
-      if (tvPollingInterval) {
-        clearInterval(tvPollingInterval);
-        tvPollingInterval = null;
-      }
-    }
-
-    function fetchTvQueueData() {
-      const poli = document.getElementById('tvFilterPoli').value;
-      runApi('getQueueTvData', { poli: poli })
-        .then(function(res) {
-          if (res && res.status === 'success') {
-            updateTvDisplay(res.activeQueue, res.nextQueues);
-          }
-        })
-        .catch(function(err) {
-          console.error('Error fetchTvQueueData:', err);
-        });
-    }
-
-    function updateTvDisplay(active, nextList) {
-      const numElem = document.getElementById('tvCurrentQueue');
-      const roomElem = document.getElementById('tvCurrentRoom');
-      const docElem = document.getElementById('tvCurrentDoctor');
-      const nextElem = document.getElementById('tvNextList');
-
-      if (active) {
-        if (numElem.innerText !== active.kode) {
-          playChimeAndSpeak(active.kode, active.ruanganPoli);
-        }
-        numElem.innerText = active.kode;
-        roomElem.innerText = active.ruanganPoli;
-        docElem.innerText = active.dokterNama;
-      } else {
-        numElem.innerText = '---';
-        roomElem.innerText = 'Menunggu Panggilan';
-        docElem.innerText = 'Klinik Akshara Dental Space';
-      }
-
-      let html = '';
-      if (nextList && nextList.length > 0) {
-        for (let i = 0; i < nextList.length; i++) {
-          const item = nextList[i];
-          html += '<div style="background:#1e293b; padding:8px 12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">' +
-            '<div>' +
-              '<div style="font-weight:700; color:#38bdf8; font-size:0.9rem;">' + item.kode + '</div>' +
-              '<div style="font-size:0.75rem; color:#94a3b8;">' + item.namaPasien + '</div>' +
-            '</div>' +
-            '<div style="font-size:0.75rem; color:#cbd5e1;">' + item.ruanganPoli + '</div>' +
-          '</div>';
-        }
-      } else {
-        html = '<div style="color:#64748b; font-size:0.8rem; text-align:center;">Belum ada antrean berikutnya.</div>';
-      }
-      nextElem.innerHTML = html;
-    }
-
-    function playChimeAndSpeak(kode, poli) {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-        osc.frequency.setValueAtTime(659, audioCtx.currentTime + 0.25);
-        gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.7);
-      } catch (e) {}
-
-      setTimeout(function() {
-        if ('speechSynthesis' in window) {
-          const speechText = 'Nomor antrean, ' + kode.replace(/-/g, ' ') + ', silakan menuju ke ' + (poli || 'ruang periksa');
-          const utterance = new SpeechSynthesisUtterance(speechText);
-          utterance.lang = 'id-ID';
-          utterance.rate = 0.9;
-          window.speechSynthesis.speak(utterance);
-        }
-      }, 800);
-    }
-
+    // AUTHENTICATION & PORTAL DASHBOARD
     function openLoginModal() {
       document.getElementById('loginModal').classList.add('show');
     }
@@ -3256,6 +3446,16 @@
                 systemGroqModel = res.settings.GROQ_MODEL;
                 syncModelSelectors(systemGroqModel);
               }
+              if (res.settings.GROQ_TTS_MODEL) {
+                systemTtsModel = res.settings.GROQ_TTS_MODEL;
+                const ttsSel = document.getElementById('adminTtsModelSelect');
+                if (ttsSel) ttsSel.value = systemTtsModel;
+              }
+              if (res.settings.GROQ_TTS_VOICE) {
+                systemTtsVoice = res.settings.GROQ_TTS_VOICE;
+                const voiceSel = document.getElementById('adminTtsVoicePersona');
+                if (voiceSel) voiceSel.value = systemTtsVoice;
+              }
               if (res.settings.GEMINI_API_KEY) {
                 document.getElementById('adminGeminiKeyInput').value = res.settings.GEMINI_API_KEY;
               }
@@ -3346,9 +3546,14 @@
     function saveGroqSettings() {
       const k = document.getElementById('adminGroqKeyInput').value.trim();
       const m = document.getElementById('adminGroqModelSelect').value;
+      const ttsM = document.getElementById('adminTtsModelSelect') ? document.getElementById('adminTtsModelSelect').value : 'canopylabs/orpheus-v1-english';
+      const ttsV = document.getElementById('adminTtsVoicePersona') ? document.getElementById('adminTtsVoicePersona').value : 'hannah';
 
       systemGroqKey = k;
       systemGroqModel = m;
+      systemTtsModel = ttsM;
+      systemTtsVoice = ttsV;
+
       syncModelSelectors(m);
 
       runApi('updateSystemSettings', {
@@ -3361,7 +3566,19 @@
           configKey: 'GROQ_MODEL',
           configValue: m
         }).then(function() {
-          showToast('Model ' + m + ' & GROQ_API_KEY berhasil disimpan!', 'success');
+          runApi('updateSystemSettings', {
+            adminUserId: currentUser ? currentUser.userId : 'ADMIN',
+            configKey: 'GROQ_TTS_MODEL',
+            configValue: ttsM
+          }).then(function() {
+            runApi('updateSystemSettings', {
+              adminUserId: currentUser ? currentUser.userId : 'ADMIN',
+              configKey: 'GROQ_TTS_VOICE',
+              configValue: ttsV
+            }).then(function() {
+              showToast('Model Groq Chat & AI TTS berhasil disimpan!', 'success');
+            });
+          });
         });
       });
     }
